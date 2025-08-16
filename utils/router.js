@@ -11,14 +11,14 @@ export class SimpleRouter {
         const hash = window.location.hash.slice(1);
         
         if (!hash || hash === 'home') {
-            return { section: 'home', view: 'home', params: {} };
+            return { section: 'home', view: 'home-page', params: {} };
         } else if (hash === 'prompts') {
-            return { section: 'prompts', view: 'prompts-overview', params: {} };
+            return { section: 'prompts', view: 'prompts-page', params: {} };
         } else if (hash.startsWith('prompts/')) {
             const promptId = hash.split('/')[1];
             return { section: 'prompts', view: 'prompt-detail', params: { promptId } };
         } else if (hash === 'experiments') {
-            return { section: 'experiments', view: 'experiments-overview', params: {} };
+            return { section: 'experiments', view: 'experiments-page', params: {} };
         } else if (hash.startsWith('experiments/')) {
             const section = hash.split('/')[1];
             return { section: 'experiments', view: 'experiment-detail', params: { section } };

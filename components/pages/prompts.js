@@ -8,21 +8,19 @@ export class PromptsPage extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div class="panel-content">
-                <h1>Prompt Collection</h1>
-                <sl-divider></sl-divider>
-                <p>Explore the different prompting approaches we've tested for UX heuristic evaluation.</p>
-                
-                <div class="prompts-grid">
-                    ${prompts.map(prompt => `
-                        <prompt-card 
-                            data-prompt-id="${prompt.id}"
-                            data-title="${prompt.title}"
-                            data-description="${prompt.description}"
-                            data-name="${prompt.name}">
-                        </prompt-card>
-                    `).join('')}
-                </div>
+            <h1>Prompt Collection</h1>
+            <sl-divider></sl-divider>
+            <p>Explore the different prompting approaches we've tested for UX heuristic evaluation.</p>
+            
+            <div class="prompts-grid">
+                ${prompts.map(prompt => `
+                    <prompt-card 
+                        data-prompt-id="${prompt.id}"
+                        data-title="${prompt.title}"
+                        data-description="${prompt.description}"
+                        data-name="${prompt.name}">
+                    </prompt-card>
+                `).join('')}
             </div>
         `;
     }

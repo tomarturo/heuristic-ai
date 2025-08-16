@@ -7,6 +7,8 @@ export class TopNavigation extends HTMLElement {
     }
 
     connectedCallback() {
+        // Get initial state from router or URL
+        this.initializeCurrentSection();
         this.render();
         this.setupEventListeners();
         
@@ -25,12 +27,25 @@ export class TopNavigation extends HTMLElement {
         }
     }
 
+    initializeCurrentSection() {
+        // Get current section from router
+        const routerState = router.getCurrentState();
+        if (routerState && routerState.section) {
+            this.currentSection = routerState.section;
+        } else {
+            // This shouldn't happen with your router, but just in case
+            this.currentSection = 'home';
+        }
+    }
+
     render() {
         this.innerHTML = `
             <nav class="top-nav">
-                <a href="#" class="nav-brand" data-section="home">
-                    AI for Heuristics
-                </a>
+                <div class="nav-brand-wrapper">
+                    <a href="#" class="nav-brand" data-section="home">
+                        AI for Heuristics
+                    </a>
+                </div>
                 <div class="nav-link-wrapper">
                     <a href="#prompts" class="nav-link" data-section="prompts">
                         <sl-icon name="terminal-fill"></sl-icon>
@@ -48,6 +63,7 @@ export class TopNavigation extends HTMLElement {
             </nav>
         `;
         
+        // Update active states after rendering
         this.updateActiveStates();
     }
 
@@ -61,6 +77,17 @@ export class TopNavigation extends HTMLElement {
                 // Navigation will be handled by router
             } else {
                 event.preventDefault();
+            }
+        });
+
+        // Also listen for hashchange events as a backup
+        // (This is redundant since router already handles hashchange, 
+        //  but kept as extra safety)
+        window.addEventListener('hashchange', () => {
+            const routerState = router.getCurrentState();
+            if (routerState.section !== this.currentSection) {
+                this.currentSection = routerState.section;
+                this.updateActiveStates();
             }
         });
     }

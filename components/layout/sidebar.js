@@ -26,14 +26,22 @@ export class AppSidebar extends HTMLElement {
             if (newState.section !== oldState?.section) {
                 this.currentSection = newState.section;
                 this.render();
+            } else {
+                // Section didn't change, just update active states
+                this.updateActiveStates();
             }
-            this.updateActiveStates();
         });
 
         // Initial render
         const state = router.getCurrentState();
         this.currentSection = state.section;
         this.render();
+        
+        // Update active states after initial render
+        // Use requestAnimationFrame to ensure DOM is ready
+        requestAnimationFrame(() => {
+            this.updateActiveStates();
+        });
     }
 
     disconnectedCallback() {
@@ -64,6 +72,11 @@ export class AppSidebar extends HTMLElement {
                 ${this.renderSidebarContent()}
             </div>
         `;
+        
+        // Update active states after rendering new content
+        requestAnimationFrame(() => {
+            this.updateActiveStates();
+        });
     }
 
     shouldShow() {
@@ -83,12 +96,6 @@ export class AppSidebar extends HTMLElement {
 
     renderPromptsSidebar() {
         return `
-            <div class="sidebar-section">
-                <a href="#prompts" class="sidebar-link">
-                    Prompts
-                </a>
-            </div>
-            
             <div class="sidebar-section">
                 ${renderMethodSubhead(methods[0])}
                 ${prompts.map(prompt => `
@@ -114,20 +121,17 @@ export class AppSidebar extends HTMLElement {
 
     renderExperimentsSidebar() {
         return `
-            <div class="sidebar-section">
-                <a href="#experiments" class="sidebar-link sidebar-header">
-                    Experiments
-                </a>
-                <a href="#experiments/results" class="sidebar-link">
-                    Results
-                </a>
-                <a href="#experiments/models" class="sidebar-link">
-                    Model Comparison
-                </a>
-                <a href="#experiments/interfaces" class="sidebar-link">
-                    Interfaces
-                </a>
-            </div>
+        <div class="sidebar-section">
+            <a href="#experiments/results" class="sidebar-link">
+                Results
+            </a>
+            <a href="#experiments/models" class="sidebar-link">
+                Model Comparison
+            </a>
+            <a href="#experiments/interfaces" class="sidebar-link">
+                Interfaces
+            </a>
+        </div>
         `;
     }
 

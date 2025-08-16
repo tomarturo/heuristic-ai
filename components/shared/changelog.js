@@ -16,7 +16,7 @@ export class ChangelogComponent extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div class="panel-content">
+            <div>
                 <h1>Changelog</h1>
                 <sl-divider></sl-divider>
                 <div class="changelog-wrapper">
