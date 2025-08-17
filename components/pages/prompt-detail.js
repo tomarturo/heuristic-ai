@@ -116,33 +116,36 @@ export class PromptDetail extends HTMLElement {
         return `
             <section id="prompt-detail" class="prompt-section">
                 <h2 class="section-title">Prompt Detail</h2>
-                <div class="content-wrapper">
-                    <div class="meta-wrapper">
-                        <div class="prompt-info">
-                            <sl-tag size="small" variant="neutral">
-                                <sl-icon name="braces"></sl-icon>
-                                ${this.selectedVersion.name || this.prompt.name}
-                            </sl-tag>
-                            <sl-tag size="small" variant="neutral">
-                                <sl-icon name="text-paragraph"></sl-icon>
-                                ${this.getWordCount()} words 
-                            </sl-tag>
-                            <sl-tag size="small" variant="neutral">
-                                <sl-icon name="database"></sl-icon>
-                                ${Math.ceil(this.getWordCount() * 1.3)} tokens
-                            </sl-tag>
+                
+                <custom-details>
+                    <div class="content-wrapper">
+                        <div class="meta-wrapper">
+                            <div class="prompt-info">
+                                <sl-tag size="small" variant="neutral">
+                                    <sl-icon name="braces"></sl-icon>
+                                    ${this.selectedVersion.name || this.prompt.name}
+                                </sl-tag>
+                                <sl-tag size="small" variant="neutral">
+                                    <sl-icon name="text-paragraph"></sl-icon>
+                                    ${this.getWordCount()} words 
+                                </sl-tag>
+                                <sl-tag size="small" variant="neutral">
+                                    <sl-icon name="database"></sl-icon>
+                                    ${Math.ceil(this.getWordCount() * 1.3)} tokens
+                                </sl-tag>
+                            </div>
+                            <sl-copy-button 
+                                value="${this.escapeHtml(this.selectedVersion.prompt || this.selectedVersion.content)}"
+                                copy-label="Copy prompt"
+                                success-label="Copied!">
+                            </sl-copy-button>
                         </div>
-                        <sl-copy-button 
-                            value="${this.escapeHtml(this.selectedVersion.prompt || this.selectedVersion.content)}"
-                            copy-label="Copy prompt"
-                            success-label="Copied!">
-                        </sl-copy-button>
+                        
+                        <div class="prompt-content">
+                            ${htmlContent}
+                        </div>
                     </div>
-                    
-                    <div class="prompt-content">
-                        ${htmlContent}
-                    </div>
-                </div>
+                </custom-details>
             </section>
         `;
     }
@@ -154,43 +157,45 @@ export class PromptDetail extends HTMLElement {
             <section id="sample-output" class="prompt-section">
                 <h2 class="section-title">Sample Output</h2>
                 
-                <div class="content-wrapper">
-                    <div class="meta-wrapper">
-                        <div class="model-info">
-                            <sl-tag variant="neutral" size="small">
-                                <sl-icon name="cpu"></sl-icon>
-                                GPT-4 Vision
-                            </sl-tag>
-                            <sl-tag variant="neutral" size="small">
-                                <sl-icon name="currency-dollar"></sl-icon>
-                                0.12
-                            </sl-tag>
-                            <sl-tag variant="neutral" size="small">
-                                <sl-icon name="clock"></sl-icon>
-                                15s
-                            </sl-tag>
+                <custom-details>
+                    <div class="content-wrapper">
+                        <div class="meta-wrapper">
+                            <div class="model-info">
+                                <sl-tag variant="neutral" size="small">
+                                    <sl-icon name="cpu"></sl-icon>
+                                    GPT-4 Vision
+                                </sl-tag>
+                                <sl-tag variant="neutral" size="small">
+                                    <sl-icon name="currency-dollar"></sl-icon>
+                                    0.12
+                                </sl-tag>
+                                <sl-tag variant="neutral" size="small">
+                                    <sl-icon name="clock"></sl-icon>
+                                    15s
+                                </sl-tag>
+                            </div>
+                        </div>
+                        
+                        ${output ? 
+                            `<div class="output-content">
+                                <div class="output-text">${output}</div>
+                             </div>` :
+                            `<div class="output-placeholder">
+                                <sl-icon name="play-circle" style="font-size: 2.5rem; opacity: 0.5; margin-bottom: 1rem;"></sl-icon>
+                                <h3>Sample Output Coming Soon</h3>
+                                <p>We're preparing example outputs for this prompt version.</p>
+                                <p class="placeholder-note">You can copy and test the prompt yourself in the meantime.</p>
+                             </div>`
+                        }
+
+                        <div class="output-footer">
+                            <p class="output-note">
+                                This sample was generated using a screenshot of Airbnb's checkout flow. 
+                                Results may vary depending on the interface and image quality.
+                            </p>
                         </div>
                     </div>
-                    
-                    ${output ? 
-                        `<div class="output-content">
-                            <div class="output-text">${output}</div>
-                         </div>` :
-                        `<div class="output-placeholder">
-                            <sl-icon name="play-circle" style="font-size: 2.5rem; opacity: 0.5; margin-bottom: 1rem;"></sl-icon>
-                            <h3>Sample Output Coming Soon</h3>
-                            <p>We're preparing example outputs for this prompt version.</p>
-                            <p class="placeholder-note">You can copy and test the prompt yourself in the meantime.</p>
-                         </div>`
-                    }
-
-                    <div class="output-footer">
-                        <p class="output-note">
-                            This sample was generated using a screenshot of Airbnb's checkout flow. 
-                            Results may vary depending on the interface and image quality.
-                        </p>
-                    </div>
-                </div>
+                </custom-details>
             </section>
         `;
     }

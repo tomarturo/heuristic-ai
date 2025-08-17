@@ -137,7 +137,7 @@
 
 .prompt-content {
   padding: 2rem;
-  background-color: var(--sl-color-neutral-50);
+  background-color: var(--sl-color-neutral-0);
   font-family: 'Monaco', 'Consolas', monospace;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -146,8 +146,8 @@
 
 /* Shared Prompt + Output */
 .content-wrapper {
-  border: 1px solid var(--sl-color-neutral-100);
-  border-radius: var(--sl-border-radius-medium);
+  /* border: 1px solid var(--sl-color-neutral-100);
+  border-radius: var(--sl-border-radius-medium); */
   overflow: hidden;
 }
 
@@ -156,8 +156,8 @@
   flex-direction: row;
   justify-content: space-between;
   padding: var(--sl-spacing-x-small) var(--sl-spacing-medium);
-  background-color: var(--sl-color-neutral-100);
-  border-bottom: 1px solid var(--sl-color-neutral-200);
+  background-color: var(--sl-color-neutral-50);
+  border-bottom: 1px solid var(--sl-color-neutral-100);
 }
 
 /* Sample Output */
