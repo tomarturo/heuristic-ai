@@ -9,8 +9,7 @@ export class PromptsPage extends HTMLElement {
     render() {
         this.innerHTML = `
             <h1>Prompt Collection</h1>
-            <sl-divider></sl-divider>
-            <p>Explore the different prompting approaches we've tested for UX heuristic evaluation.</p>
+            <p class="prompt-page-copy">Explore the different prompting approaches we've tested for UX heuristic evaluation.</p>
             
             <div class="prompts-grid">
                 ${prompts.map(prompt => `

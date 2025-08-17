@@ -377,5 +377,33 @@ DO NOT USE TABLES; Use Conceptual Chaining structure for findings:
 - **Focus:** Substantive issues → Clear chains → Actionable solutions
         `,
         output: "Another test output"
+    },
+
+    // Example of a prompt with multiple versions
+{
+  id: "5",
+  title: "UX Heuristic Evaluation",
+  description: "Analyze UI screenshots using Nielsen's usability heuristics",
+  versions: [
+    {
+      id: "simple",
+      name: "Simple Version",
+      prompt: "Evaluate this UI using Nielsen's 10 heuristics...",
+      output: "Basic evaluation output..."
+    },
+    {
+      id: "detailed", 
+      name: "Detailed Version",
+      prompt: "Conduct a comprehensive heuristic evaluation...",
+      output: "Comprehensive evaluation output..."
+    },
+    {
+      id: "conceptual-chaining",
+      name: "Conceptual Chaining",
+      prompt: "Use conceptual chaining method to evaluate...",
+      output: "Chained evaluation output..."
     }
+  ]
+}
 ];
+

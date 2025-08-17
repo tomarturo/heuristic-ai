@@ -2,12 +2,17 @@ html {
     font-size: 14px;
     font-family: var(--sl-font-sans);
     color: var(--sl-color-neutral-1000);
+
 }
 
 body {
     margin: 0px;
     background: var(--sl-color-neutral-0);
     overflow-y: auto;
+}
+
+h1, h2, h3, h4 {
+    font-weight: var(--sl-font-weight-semibold);
 }
 
 app-shell {
@@ -36,7 +41,7 @@ app-shell {
 .top-nav {
     display: flex;
     align-items: center;
-    padding: var(--sl-spacing-medium) 0;
+    padding: var(--sl-spacing-large) 0;
     margin: 0 auto;
     max-width: var(--max-width);
 }
@@ -48,8 +53,9 @@ app-shell {
 
 .nav-brand {
     font-size: var(--sl-font-size-medium);
+    font-weight: var(--sl-font-weight-semibold);
     text-decoration: none;
-    color: var(--sl-color-neutral-600);
+    color: var(--sl-color-neutral-1000);
     transition: var(--transition);
 }
 
@@ -119,7 +125,7 @@ app-sidebar {
     overflow-y: auto;
     flex-shrink: 0;
     position: sticky;
-    top: 45px;
+    top: 53px;
     height: calc(100vh - 50px);
     overflow-y: auto;
     align-self: flex-start;
@@ -160,7 +166,7 @@ app-sidebar {
 }
 
 .sidebar-link.active {
-    background: var(--sl-color-neutral-100);
+    background: var(--sl-color-neutral-50);
     color: var(--sl-color-primary-1000);
     border-left: 2px solid var(--sl-color-neutral-1000);
 }
@@ -191,20 +197,12 @@ app-sidebar {
 .content-area {
     flex: 1;
     overflow-y: visible;
-    max-width: 760px;
     margin: 0 auto;
-    padding: var(--sl-spacing-large) var(--sl-spacing-2x-large);
+    padding: var(--sl-spacing-x-large) var(--sl-spacing-3x-large);
 }
 
 .content-area.full-width {
     width: 100%;
-}
-
-.prompt-wrapper {
-    background-color: var(--sl-color-neutral-0);
-    border: 1px solid var(--sl-color-neutral-200);
-    border-radius: var(--sl-border-radius-large);
-    padding: var(--sl-spacing-large);
 }
 
 .flex-apart {
@@ -215,12 +213,8 @@ app-sidebar {
     width: 100%;
 }
 
-.prompt-code {
-    white-space: pre-wrap;
-}
-
 sl-tag sl-icon {
-    margin-right: var(--sl-spacing-x-small);
+    margin-right: var(--sl-spacing-2x-small);
 }
 
 .changelog-wrapper {
@@ -239,13 +233,11 @@ sl-tag sl-icon {
     gap: var(--sl-spacing-x-small);
 }
 
-/* Content Sections */
-
-/* sl-tag[variant="accent"]::part(base) {
-  color: var(--sl-color-blue-800) !important;
-  background-color: var(--sl-color-blue-100) !important;
-  border-color: var(--sl-color-blue-300) !important;
-} */
+/* Prompts page */
+.prompt-page-copy {
+    font-size: var(--sl-font-size-large);
+    color: var(--sl-color-neutral-600);
+}
 
 .prompts-grid {
     display: grid;
@@ -264,7 +256,7 @@ sl-tag sl-icon {
 }
 
 .prompt-card:hover {
-    border-color: var(--sl-color-neutral-200);
+    border-color: var(--sl-color-neutral-150);
 }
 
 .prompt-card h3 {
@@ -278,7 +270,13 @@ sl-tag sl-icon {
 }
 
 .prompt-card:hover h3 a {
-    color: var(--sl-color-primary-700);
+    color: var(--sl-color-primary-600);
+}
+
+.prompt-card:hover sl-tag.card-tag::part(base) {
+    background-color: var(--sl-color-primary-50);
+    border-color: var(--sl-color-primary-200);
+    color: var(--sl-color-primary-800);
 }
 
 .prompt-card-description {
@@ -291,6 +289,7 @@ sl-tag sl-icon {
     gap: var(--sl-spacing-x-small);
 }
 
+/* experiments page */
 .experiment-sections {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -331,13 +330,6 @@ sl-tag sl-icon {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .horizontal-nav {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem 0;
-        gap: 1rem;
-    }
-
     .nav-links {
         justify-content: center;
         flex-wrap: wrap;

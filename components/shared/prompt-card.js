@@ -40,7 +40,7 @@ export class PromptCard extends HTMLElement {
                     <p class="prompt-card-description">${this.description}</p>
                 </div>
                 <div class="prompt-card-meta">
-                    <sl-tag size="small" variant="neutral">
+                    <sl-tag class="card-tag" size="small" variant="neutral">
                         <sl-icon name="braces"></sl-icon>
                         ${this.name}
                     </sl-tag>
