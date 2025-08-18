@@ -3,8 +3,7 @@ export class AppState {
         this.state = {
             currentSection: 'home',
             currentView: 'home',
-            selectedPrompt: null,
-            sidebarVisible: false
+            selectedPrompt: null
         };
         this.listeners = new Map();
     }

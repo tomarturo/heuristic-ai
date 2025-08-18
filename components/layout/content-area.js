@@ -22,6 +22,9 @@ export class ContentArea extends HTMLElement {
             
             this.currentState = state;
             this.render();
+            
+            // Scroll to top when navigating to a new page
+            this.scrollToTop();
         }
     }
 
@@ -80,6 +83,11 @@ export class ContentArea extends HTMLElement {
     createNotFoundComponent() {
         const notFound = document.createElement('not-found-view');
         return notFound;
+    }
+
+    scrollToTop() {
+        // Jump to top of the page instantly
+        window.scrollTo(0, 0);
     }
 }
 

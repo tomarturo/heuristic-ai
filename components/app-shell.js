@@ -1,7 +1,6 @@
 // components/app-shell.js - Simplified!
 import { router } from '../utils/router.js';
 import './layout/navigation.js';
-import './layout/sidebar.js';
 import './layout/content-area.js';
 
 export class AppShell extends HTMLElement {
@@ -34,8 +33,8 @@ export class AppShell extends HTMLElement {
     }
 
     setupRouting() {
-        this.unsubscribe = router.addListener((newState, oldState) => {
-            this.handleRoute(newState, oldState);
+        this.unsubscribe = router.addListener((newState) => {
+            this.handleRoute(newState);
         });
     }
 
@@ -45,7 +44,7 @@ export class AppShell extends HTMLElement {
         }
     }
 
-    handleRoute(newState, oldState) {
+    handleRoute(newState) {
         this.contentArea.updateContent(newState);
     }
 }

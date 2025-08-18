@@ -1,6 +1,7 @@
 // components/pages/prompt-detail.js - Inline version with TOC
 import { prompts } from '../../data/prompts.js';
 import '../../components/shared/details.js';
+import { ScrollSpy } from '../../components/shared/scroll-spy.js';
 
 const converter = new showdown.Converter({
     simpleLineBreaks: true,
@@ -11,6 +12,7 @@ export class PromptDetail extends HTMLElement {
         super();
         this.prompt = null;
         this.selectedVersion = null;
+        this.scrollSpy = null;
     }
 
     static get observedAttributes() {
@@ -62,9 +64,7 @@ export class PromptDetail extends HTMLElement {
                 <!-- Table of Contents Right Rail -->
 
                 <div class="right-rail">
-                    <div class="toc-header">
-                        <h3>Contents</h3>
-                    </div>
+                    <h3 class="right-rail-header">Contents</h3>
                     <section class="toc-nav">
                         <ul class="toc-list">
                             <li><a href="#overview" class="toc-link">Overview</a></li>
@@ -78,6 +78,7 @@ export class PromptDetail extends HTMLElement {
         `;
 
         this.attachEventListeners();
+        this.initializeScrollSpy();
     }
 
     renderOverview() {
@@ -289,57 +290,26 @@ export class PromptDetail extends HTMLElement {
             });
         }
 
-        // Handle smooth scrolling for TOC links
-        const tocLinks = this.querySelectorAll('.toc-link');
-        tocLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = this.querySelector(`#${targetId}`);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Update active state
-                    this.updateActiveTocItem(link);
-                }
-            });
-        });
-
-        // Add scroll spy for TOC
-        this.setupScrollSpy();
+        // TOC functionality is now handled by ScrollSpy component
     }
 
-    setupScrollSpy() {
-        const sections = this.querySelectorAll('.page-section');
-        const tocLinks = this.querySelectorAll('.toc-link');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    const activeLink = this.querySelector(`.toc-link[href="#${id}"]`);
-                    if (activeLink) {
-                        this.updateActiveTocItem(activeLink);
-                    }
-                }
-            });
-        }, {
-            rootMargin: '-20% 0px -80% 0px'
+    initializeScrollSpy() {
+        // Initialize ScrollSpy with default options (matches original behavior)
+        this.scrollSpy = new ScrollSpy(this, {
+            sectionsSelector: '.page-section',
+            tocLinksSelector: '.toc-link',
+            activeClass: 'active',
+            rootMargin: '-20% 0px -80% 0px',
+            initializeFirstActive: false // Don't auto-initialize first section
         });
-
-        sections.forEach(section => observer.observe(section));
     }
 
-    updateActiveTocItem(activeLink) {
-        // Remove active class from all TOC links
-        const tocLinks = this.querySelectorAll('.toc-link');
-        tocLinks.forEach(link => link.classList.remove('active'));
-        
-        // Add active class to current link
-        activeLink.classList.add('active');
+    disconnectedCallback() {
+        // Clean up ScrollSpy when component is removed
+        if (this.scrollSpy) {
+            this.scrollSpy.destroy();
+            this.scrollSpy = null;
+        }
     }
 
     updateContent() {
@@ -357,6 +327,12 @@ export class PromptDetail extends HTMLElement {
 
         // Re-attach listeners for the new content
         this.attachEventListeners();
+        
+        // Reinitialize ScrollSpy for updated content
+        if (this.scrollSpy) {
+            this.scrollSpy.destroy();
+        }
+        this.initializeScrollSpy();
     }
 
     getWordCount() {

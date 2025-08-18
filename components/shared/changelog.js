@@ -16,19 +16,18 @@ export class ChangelogComponent extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div>
-                <h3 class="text-muted">Changelog</h3>
+            
+                <h3 class="right-rail-header">Changelog</h3>
                 <div class="changelog-wrapper">
                     ${changes.map(change => this.renderChangelogItem(change)).join('')}
                 </div>
-            </div>
         `;
     }
 
     renderChangelogItem(change) {
         return `
-            <div class="changelog-item">
-                <h4>${change.date}</h4>
+            <div>
+                <text class="changelog-date">${change.date}</text>
                 <p class="text-muted">${change.description}</p>
                 <div class="changelog-item-tags">
                     ${change.tags.map(tag => `
