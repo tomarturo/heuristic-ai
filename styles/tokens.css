@@ -62,9 +62,6 @@
     --sl-color-danger-900: var(--sl-color-red-900);
     --sl-color-danger-950: var(--sl-color-red-950);
 
-
-
-
     /* paper */
     --sl-color-neutral-0: #FFFCF0;
     /* neutral */
@@ -205,6 +202,6 @@
     --sl-color-magenta-950: #241311;
 
     /* utils */
-    --max-width: 1500px;
+    --max-width: 1400px;
     --transition: all 0.2s ease;
 }

@@ -1,6 +1,7 @@
 export const prompts = [
     {
         id: "1",
+        type: "single-prompt",
         name: "ux_eval_brief",
         title: "Brief Evaluation",
         description: `
@@ -54,6 +55,7 @@ Focus on significant usability issues only.
     },
     {
         id: "2", 
+        type: "single-prompt",
         name: "ux_eval_simple",
         title: "Simple Evaluation",
         description: `
@@ -153,6 +155,7 @@ For each heuristic violation found, provide:
     },
     {
         id: "3", 
+        type: "single-prompt",
         name: "ux_eval_detailed",
         title: "Detailed Evalution",
         description: "This version provides extensive definitions, key principles, and specific guidance for each heuristic, along with a structured severity rating system (1-4 scale). It emphasizes thoroughness and educational value, offering detailed explanations of what to look for and how to categorize findings with justification.",
@@ -276,6 +279,7 @@ Focus on substantive issues (severity 2+). Report your findings in order of seve
     },
     {
         id: "4", 
+        type: "single-prompt",
         name: "ux_eval_conceptual_chain",
         title: "Conceptual Chain",
         description: "This approach uses arrow notation (→) to show logical dependencies and cause-effect relationships between UI issues and heuristic violations. It focuses on connecting concepts sequentially while minimizing verbosity, creating a more analytical framework that traces problems from root causes through to user consequences.",
@@ -382,6 +386,7 @@ DO NOT USE TABLES; Use Conceptual Chaining structure for findings:
     // Example of a prompt with multiple versions
 {
   id: "5",
+  type: "multi-prompt",
   title: "UX Heuristic Evaluation",
   description: "Analyze UI screenshots using Nielsen's usability heuristics",
   versions: [

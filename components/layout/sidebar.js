@@ -68,7 +68,7 @@ export class AppSidebar extends HTMLElement {
 
         this.style.display = 'block';
         this.innerHTML = `
-            <div class="sidebar-content">
+            <div class="sidebar-content tooltip-hoist">
                 ${this.renderSidebarContent()}
             </div>
         `;
@@ -96,7 +96,7 @@ export class AppSidebar extends HTMLElement {
 
     renderPromptsSidebar() {
         return `
-            <div class="sidebar-section">
+            <div class="sidebar-section tooltip-hoist">
                 ${renderMethodSubhead(methods[0])}
                 ${prompts.map(prompt => `
                     <a href="#prompts/${prompt.id}" class="sidebar-link">
@@ -105,15 +105,15 @@ export class AppSidebar extends HTMLElement {
                 `).join('')}
             </div>
             
-            <div class="sidebar-section">
+            <div class="sidebar-section tooltip-hoist">
                 ${renderMethodSubhead(methods[1])}
             </div>
             
-            <div class="sidebar-section">
+            <div class="sidebar-section tooltip-hoist">
                 ${renderMethodSubhead(methods[2])}
             </div>
             
-            <div class="sidebar-section">
+            <div class="sidebar-section tooltip-hoist">
                 ${renderMethodSubhead(methods[3])}
             </div>
         `;

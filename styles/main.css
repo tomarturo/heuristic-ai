@@ -2,7 +2,6 @@ html {
     font-size: 14px;
     font-family: var(--sl-font-sans);
     color: var(--sl-color-neutral-1000);
-
 }
 
 body {
@@ -11,8 +10,25 @@ body {
     overflow-y: auto;
 }
 
+h1 {
+  font-size: var(--sl-font-size-2x-large);
+  font-weight: var(--sl-font-weight-semibold);
+  margin-bottom: var(--sl-spacing-medium);
+  margin-top: var(--sl-spacing-x-small);
+  color: var(--sl-color-neutral-1000);
+}
+
 h1, h2, h3, h4 {
     font-weight: var(--sl-font-weight-semibold);
+}
+
+.text-muted {
+    color: var(--sl-color-neutral-600);
+}
+
+::selection {
+    background-color: var(--sl-color-primary-700);
+    color: var(--sl-color-neutral-0);
 }
 
 app-shell {
@@ -34,6 +50,7 @@ app-shell {
     position: sticky;
     top: 0;
     z-index: 100;
+    padding: var(--sl-spacing-large);
     background-color: var(--sl-color-neutral-0);
     border-bottom: 1px solid var(--sl-color-neutral-100);
 }
@@ -41,25 +58,32 @@ app-shell {
 .top-nav {
     display: flex;
     align-items: center;
-    padding: var(--sl-spacing-large) 0;
-    margin: 0 auto;
+    justify-content: space-between;
     max-width: var(--max-width);
+    margin: auto;
 }
 
-.nav-brand-wrapper {
-    width: 200px;
-    padding-left: var(--sl-spacing-x-large);
+.nav-brand-wrapper sl-icon {
+    font-size: large;
 }
 
 .nav-brand {
-    font-size: var(--sl-font-size-medium);
+    font-size: var(--sl-font-size-large);
     font-weight: var(--sl-font-weight-semibold);
-    text-decoration: none;
-    color: var(--sl-color-neutral-1000);
+    color: var(--sl-color-neutral-600);
     transition: var(--transition);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sl-spacing-x-small);
+    text-decoration: none;
 }
 
 .nav-brand:hover {
+    color: var(--sl-primary-600);
+}
+
+.nav-brand:hover a {
     color: var(--sl-primary-600);
 }
 
@@ -107,6 +131,20 @@ app-shell {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.social-link-wrapper {
+    display: flex;
+    gap: var(--sl-spacing-large);
+}
+
+.social-link {
+    color: var(--sl-color-neutral-1000);
+    transition: var(--transition);
+    font-size: var(--sl-font-size-medium);
+}
+.social-link:hover {
+    color: var(--sl-color-primary-600);
 }
 
 /* Main Content Layout */
@@ -234,16 +272,9 @@ sl-tag sl-icon {
 }
 
 /* Prompts page */
-.prompt-page-copy {
+.sub-copy {
     font-size: var(--sl-font-size-large);
     color: var(--sl-color-neutral-600);
-}
-
-.prompts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
 }
 
 .prompt-card {
@@ -290,33 +321,32 @@ sl-tag sl-icon {
 }
 
 /* experiments page */
-.experiment-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
 .experiment-card {
-    border: 1px solid var(--sl-color-neutral-100);
+    background-color: var(--sl-color-neutral-50);
+    border: 1px solid var(--sl-color-neutral-200);
     border-radius: var(--sl-border-radius-large);
-    padding: 2rem;
+    padding: var(--sl-spacing-medium) var(--sl-spacing-large);
     transition: var(--transition);
     cursor: pointer;
+    margin-bottom: var(--sl-spacing-large);
+}
+
+.experiment-card h2 {
+    margin-top: 0;
+    margin-bottom: var(--sl-spacing-x-small);
 }
 
 .experiment-card:hover {
-    border-color: var(--sl-color-primary-200);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--sl-color-neutral-300);
+    background-color: var(--sl-color-neutral-50);
 }
 
-.experiment-card h3 {
-    margin: 0 0 1rem 0;
-    color: var(--sl-color-neutral-900);
+.experiment-card:hover .btn-link {
+    color: var(--sl-color-primary-600);
 }
 
 .btn-link {
-    color: var(--sl-color-primary-700);
+    color: var(--sl-color-neutral-1000);
     text-decoration: none;
     font-weight: 500;
     display: inline-flex;
@@ -324,8 +354,12 @@ sl-tag sl-icon {
     margin-top: 1rem;
 }
 
+.btn-link sl-icon {
+    margin-right: var(--sl-spacing-small);
+}
+
 .btn-link:hover {
-    color: var(--sl-color-primary-800);
+    color: var(--sl-color-primary-600);
 }
 
 /* Responsive Design */
@@ -335,7 +369,7 @@ sl-tag sl-icon {
         flex-wrap: wrap;
     }
 
-    .main-content.with-sidebar {
+    .main-content {
         flex-direction: column;
     }
 
@@ -343,10 +377,5 @@ sl-tag sl-icon {
         width: 100%;
         max-height: 200px;
         order: 2;
-    }
-
-    .prompts-grid,
-    .experiment-sections {
-        grid-template-columns: 1fr;
     }
 }

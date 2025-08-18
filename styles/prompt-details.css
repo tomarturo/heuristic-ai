@@ -1,6 +1,6 @@
 /* Prompt Detail Inline Layout Styles */
 
-.prompt-detail-layout {
+.two-col-layout {
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: var(--sl-spacing-4x-large);
@@ -77,15 +77,7 @@
 
 /* Overview Section */
 .prompt-header {
-  margin-bottom: 2rem;
-}
-
-.prompt-header h1 {
-  font-size: var(--sl-font-size-2x-large);
-  font-weight: var(--sl-font-weight-semibold);
-  margin-bottom: var(--sl-spacing-medium);
-  margin-top: var(--sl-spacing-x-small);
-  color: var(--sl-color-neutral-1000);
+  margin-bottom: var(--sl-spacing-2x-large);
 }
 
 .prompt-description {

@@ -41,23 +41,34 @@ export class TopNavigation extends HTMLElement {
     render() {
         this.innerHTML = `
             <nav class="top-nav">
-                <div class="nav-brand-wrapper">
-                    <a href="#" class="nav-brand" data-section="home">
-                        AI for Heuristics
-                    </a>
-                </div>
-                <div class="nav-link-wrapper">
-                    <a href="#prompts" class="nav-link" data-section="prompts">
-                        <sl-icon name="terminal-fill"></sl-icon>
-                        Prompts
-                    </a>
-                    <a href="#experiments" class="nav-link" data-section="experiments">
+                <div style="display: flex; flex-direction: row; gap:var(--sl-spacing-3x-large);">
+                    <div class="nav-brand-wrapper">
+                        <a href="#" class="nav-brand" data-section="home">
                         <sl-icon name="transparency"></sl-icon>
-                        Experiments
+                            AI for Heuristics
+                        </a>
+                    </div>
+                    <div class="nav-link-wrapper">
+                        <a href="#prompts" class="nav-link" data-section="prompts">
+                            <sl-icon name="terminal-fill"></sl-icon>
+                            Prompts
+                        </a>
+                        <a href="#experiments" class="nav-link" data-section="experiments">
+                            <sl-icon name="clipboard-data-fill"></sl-icon>
+                            Experiments
+                        </a>
+                        <a href="#future" class="nav-link">
+                            <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
+                            Future
+                        </a>
+                    </div>
+                </div>
+                <div class="social-link-wrapper">
+                    <a href="https://github.com/tomarturo" class="social-link" target="blank">
+                        <sl-icon name="github"></sl-icon>
                     </a>
-                    <a href="#future" class="nav-link">
-                        <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
-                        Future
+                    <a href="https://www.linkedin.com/in/tomkurzeka" class="social-link" target="blank">
+                        <sl-icon name="linkedin"></sl-icon>
                     </a>
                 </div>
             </nav>

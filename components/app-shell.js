@@ -24,7 +24,6 @@ export class AppShell extends HTMLElement {
                     <top-navigation></top-navigation>
                 </div>
                 <main class="main-content">
-                    <app-sidebar></app-sidebar>
                     <content-area></content-area>
                 </main>
             </div>

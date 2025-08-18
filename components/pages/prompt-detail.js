@@ -50,7 +50,7 @@ export class PromptDetail extends HTMLElement {
         }
 
         this.innerHTML = `
-            <div class="prompt-detail-layout">
+            <div class="two-col-layout">
                 <!-- Main Content -->
                 <div class="prompt-main-content">
                     ${this.renderOverview()}
