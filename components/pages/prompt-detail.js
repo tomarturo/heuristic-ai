@@ -52,7 +52,7 @@ export class PromptDetail extends HTMLElement {
         this.innerHTML = `
             <div class="two-col-layout">
                 <!-- Main Content -->
-                <div class="prompt-main-content">
+                <div class="main-column">
                     ${this.renderOverview()}
                     ${this.renderPromptDetails()}
                     ${this.renderSampleOutput()}
@@ -61,7 +61,7 @@ export class PromptDetail extends HTMLElement {
                 
                 <!-- Table of Contents Right Rail -->
 
-                <div class="prompt-toc">
+                <div class="right-rail">
                     <div class="toc-header">
                         <h3>Contents</h3>
                     </div>
@@ -82,10 +82,10 @@ export class PromptDetail extends HTMLElement {
 
     renderOverview() {
         return `
-            <section id="overview" class="prompt-section">
-                <div class="prompt-header">
+            <section id="overview" class="page-section">
+                <div class="page-header">
                     <h1>${this.prompt.title}</h1>
-                    <p class="prompt-description">${this.prompt.description}</p>
+                    <p class="page-description">${this.prompt.description}</p>
                     ${this.renderVersionSelector()}
                 </div>
             </section>
@@ -114,7 +114,7 @@ export class PromptDetail extends HTMLElement {
         const htmlContent = converter.makeHtml(this.selectedVersion.prompt || this.selectedVersion.content);
         
         return `
-            <section id="prompt-detail" class="prompt-section">
+            <section id="prompt-detail" class="page-section">
                 <h2 class="section-title">Prompt Detail</h2>
                 
                 <custom-details>
@@ -154,7 +154,7 @@ export class PromptDetail extends HTMLElement {
         const output = this.selectedVersion.output || this.prompt.output;
         
         return `
-            <section id="sample-output" class="prompt-section">
+            <section id="sample-output" class="page-section">
                 <h2 class="section-title">Sample Output</h2>
                 
                 <custom-details>
@@ -202,7 +202,7 @@ export class PromptDetail extends HTMLElement {
 
     renderUsage() {
         return `
-            <section id="usage" class="prompt-section">
+            <section id="usage" class="page-section">
                 <h2 class="section-title">Usage</h2>
                 
                 <div class="usage-wrapper">
@@ -253,8 +253,8 @@ export class PromptDetail extends HTMLElement {
 
     renderNotFound() {
         this.innerHTML = `
-            <div class="prompt-detail-layout">
-                <div class="prompt-main-content">
+            <div class="two-col-layout">
+                <div class="main-column">
                     <div class="not-found">
                         <sl-icon name="exclamation-triangle" style="font-size: 3rem; color: var(--sl-color-warning-600); margin-bottom: 1rem;"></sl-icon>
                         <h2>Prompt Not Found</h2>
@@ -265,6 +265,7 @@ export class PromptDetail extends HTMLElement {
                         </sl-button>
                     </div>
                 </div>
+                <div class="right-rail"></div>
             </div>
         `;
     }
@@ -312,7 +313,7 @@ export class PromptDetail extends HTMLElement {
     }
 
     setupScrollSpy() {
-        const sections = this.querySelectorAll('.prompt-section');
+        const sections = this.querySelectorAll('.page-section');
         const tocLinks = this.querySelectorAll('.toc-link');
         
         const observer = new IntersectionObserver((entries) => {
@@ -345,13 +346,13 @@ export class PromptDetail extends HTMLElement {
         // Update the prompt details section
         const promptSection = this.querySelector('#prompt-detail');
         if (promptSection) {
-            promptSection.innerHTML = this.renderPromptDetails().replace('<section id="prompt-detail" class="prompt-section">', '').replace('</section>', '');
+            promptSection.innerHTML = this.renderPromptDetails().replace('<section id="prompt-detail" class="page-section">', '').replace('</section>', '');
         }
         
         // Update the sample output section
         const outputSection = this.querySelector('#sample-output');
         if (outputSection) {
-            outputSection.innerHTML = this.renderSampleOutput().replace('<section id="sample-output" class="prompt-section">', '').replace('</section>', '');
+            outputSection.innerHTML = this.renderSampleOutput().replace('<section id="sample-output" class="page-section">', '').replace('</section>', '');
         }
 
         // Re-attach listeners for the new content

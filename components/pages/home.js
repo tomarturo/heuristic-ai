@@ -10,7 +10,7 @@ export class HomePage extends HTMLElement {
     render() {
         this.innerHTML = `
             <section class="two-col-layout">
-                <div>
+                <div class="main-column">
                     <h1>LLMs & UX Heuristic Analysis</h1>
                     <h3>Can large language models reliably conduct a UX heuristic analysis?</h3>
                     <p>A few posts on LinkedIn got me thinking about this question. Most of the attempts I read about were not particularly methodical, more or less attaching a screenshot to a prompt and blithely asking the model for a UX heuristic analysis based on its default dearth of information.</p>
@@ -27,7 +27,7 @@ export class HomePage extends HTMLElement {
 
                 <!-- Changelog Right Rail -->
 
-                <div class="prompt-toc">
+                <div class="right-rail">
                     <changelog-component></changelog-component>
                 </div>
             </section>

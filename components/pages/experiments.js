@@ -4,12 +4,13 @@
     }
 
     render() {
-        this.innerHTML =  `
-        <section style="max-width: 856px;">
-                <div style="margin-bottom: var(--sl-spacing-2x-large); max-width: 856px;">
-                    <h1>Experiments Overview</h1>
-                    <p class="sub-copy">Systematic evaluation of AI models performing UX heuristic analysis.</p>
-                </div>
+        this.innerHTML = `
+            <section class="two-col-layout">
+                <div class="main-column">
+                    <div class="page-header">
+                        <h1>Experiments Overview</h1>
+                        <p class="page-description">Systematic evaluation of AI models performing UX heuristic analysis.</p>
+                    </div>
                 <div>   
                     <h2>
                         <a href="#experiments/models" class="btn-link">
@@ -39,8 +40,22 @@
                     </h2>
                     <p class="text-muted">Interactive dashboard to explore all experimental findings.</p>
                 </div>
+                </div>
+                
+                <!-- Right Rail -->
+                <div class="right-rail">
+                    <div class="toc-header">
+                        <h3>Quick Links</h3>
+                    </div>
+                    <section class="toc-nav">
+                        <ul class="toc-list">
+                            <li><a href="#experiments/models" class="toc-link">Model Performance</a></li>
+                            <li><a href="#experiments/interfaces" class="toc-link">Interface Evaluations</a></li>
+                            <li><a href="#experiments/results" class="toc-link">All Results</a></li>
+                        </ul>
+                    </section>
+                </div>
             </section>
-            
         `;
     }
 }
