@@ -1,13 +1,6 @@
+// components/changelog/changelog.js
 import { changes } from '../../data/changelog.js';
-
-const tagIcons = {
-  "design": "palette",
-  "development": "code", 
-  "data": "database",
-  "planning": "journal-text",
-  "research": "search",
-  "prompting": "braces"
-};
+import { getTagData } from '../../data/tags.js';
 
 export class ChangelogComponent extends HTMLElement {
     connectedCallback() {
@@ -16,10 +9,10 @@ export class ChangelogComponent extends HTMLElement {
 
     render() {
         this.innerHTML = `
-                <h3 class="right-rail-header">Activity</h3>
-                <div class="changelog-wrapper">
-                    ${changes.map(change => this.renderChangelogItem(change)).join('')}
-                </div>
+            <h3 class="right-rail-header">Progress</h3>
+            <div class="changelog-wrapper">
+                ${changes.map(change => this.renderChangelogItem(change)).join('')}
+            </div>
         `;
     }
 
@@ -29,12 +22,17 @@ export class ChangelogComponent extends HTMLElement {
                 <text class="changelog-date">${change.date}</text>
                 <p class="changelog-description">${change.description}</p>
                 <div class="changelog-item-tags">
-                    ${change.tags.map(tag => `
-                        <sl-tag size="small" variant="neutral">
-                            <sl-icon name="${tagIcons[tag] || 'tag'}"></sl-icon>
-                            ${tag}
-                        </sl-tag>
-                    `).join('')}
+                    ${change.tags.map(tag => {
+                        const tagData = getTagData(tag);
+                        return `
+                            <sl-tooltip content="${tagData.context}" placement="bottom">
+                                <sl-tag size="small" variant="neutral">
+                                    <sl-icon name="${tagData.icon}"></sl-icon>
+                                    ${tag}
+                                </sl-tag>
+                            </sl-tooltip>
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `;

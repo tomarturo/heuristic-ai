@@ -4,6 +4,12 @@ html {
     color: var(--sl-color-neutral-1000);
 }
 
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
 body {
     margin: 0px;
     background: var(--sl-color-neutral-0);
@@ -342,9 +348,8 @@ sl-tag sl-icon {
 
 .right-rail {
     position: sticky;
-    top: 104px;
+    top: 128px;
     height: fit-content;
-    padding: var(--sl-spacing-small);
 }
 
 .right-rail-header {
@@ -468,7 +473,7 @@ sl-tag sl-icon {
     /* Two-column responsive */
     .two-col-layout {
         grid-template-columns: 1fr;
-        gap: var(--sl-spacing-x-large);
+        gap: var(--sl-spacing-2x-large);
         padding: var(--sl-spacing-small);
     }
     

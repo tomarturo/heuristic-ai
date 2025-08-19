@@ -54,7 +54,7 @@ export class TopNavigation extends HTMLElement {
                             Prompts
                         </a>
                         <a href="#experiments" class="nav-link" data-section="experiments">
-                            <sl-icon name="clipboard-data-fill"></sl-icon>
+                            <sl-icon name="flask-fill"></sl-icon>
                             Experiments
                         </a>
                         <a href="#future" class="nav-link">

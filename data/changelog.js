@@ -2,14 +2,14 @@ export const changes = [
     {
         id:"3",
         date:"August 18, 2025",
-        description: "Refining front-end styles and simplifying layouts; preparing data structure for first experiments and evals.",
-        tags: ["design", "development", "data"]
+        description: "Refining front-end styles and simplifying layouts; preparing data structure for first experiments and evals; adding project background to homepage.",
+        tags: ["information design", "frontend", "evaluation"]
     },
     {
         id:"2",
         date:"August 15, 2025",
-        description: "Standing up a frontend with Shoelace web components; designing app layout; exploring data to front-end relatonships.",
-        tags: ["design", "development", "data"]
+        description: "Standing up a frontend with Shoelace web components; designing app layout; exploring data + front-end relatonships.",
+        tags: ["design", "frontend", "backend"]
     },
     {
         id:"1",

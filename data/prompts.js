@@ -157,7 +157,7 @@ For each heuristic violation found, provide:
         id: "3", 
         type: "single-prompt",
         name: "ux_eval_detailed",
-        title: "Detailed Evalution",
+        title: "Detailed Evaluation",
         description: "This version provides extensive definitions, key principles, and specific guidance for each heuristic, along with a structured severity rating system (1-4 scale). It emphasizes thoroughness and educational value, offering detailed explanations of what to look for and how to categorize findings with justification.",
         prompt: 
         `You will conduct a heuristic evaluation of the provided user interface screenshot using Jakob Nielsen's 10 Usability Heuristics, as defined by Nielsen Norman Group.
