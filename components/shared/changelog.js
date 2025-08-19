@@ -27,7 +27,7 @@ export class ChangelogComponent extends HTMLElement {
         return `
             <div class="changelog-item-wrapper">
                 <text class="changelog-date">${change.date}</text>
-                <p class="text-muted">${change.description}</p>
+                <p class="changelog-description">${change.description}</p>
                 <div class="changelog-item-tags">
                     ${change.tags.map(tag => `
                         <sl-tag size="small" variant="neutral">

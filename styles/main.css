@@ -168,10 +168,10 @@ sl-tag[variant="accent-purple"]::part(base) {
     color: var(--sl-color-purple-600);
 }
 
-sl-tag[variant="accent-light"]::part(base) {
-    background-color: var(--sl-color-neutral-0);
-    border: 1px solid var(--sl-color-neutral-300);
-    color: var(--sl-color-neutral-600);
+sl-tag[variant="accent-magenta"]::part(base) {
+    background-color: var(--sl-color-magenta-50);
+    border: 1px solid var(--sl-color-magenta-200);
+    color: var(--sl-color-magenta-600);
 }
 
 sl-tag sl-icon {
@@ -189,6 +189,12 @@ sl-tag sl-icon {
 .changelog-date {
     color: var(--sl-color-neutral-1000);
     font-weight: var(--sl-font-weight-semibold);
+    font-size: var(--sl-font-size-small);
+}
+
+.changelog-description {
+    font-size: var(--sl-font-size-small);
+    color: var(--sl-color-neutral-600);   
 }
 
 .changelog-item-tags {
