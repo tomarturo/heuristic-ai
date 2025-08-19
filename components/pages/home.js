@@ -41,7 +41,7 @@ export class HomePage extends HTMLElement {
 
                 <!-- Changelog Right Rail -->
 
-                <div>
+                <div class="right-rail">
                     <changelog-component></changelog-component>
                 </div>
             </section>
@@ -72,37 +72,26 @@ export class HomePage extends HTMLElement {
                 </ul>
 
                 <h3>Evaluation Framework</h3>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sl-spacing-large); margin: var(--sl-spacing-large) 0;">
-                    <div>
-                        <h4>Detection Metrics</h4>
-                        <ul>
-                            <li><strong>Precision:</strong> Percentage of flagged issues that are legitimate</li>
-                            <li><strong>Recall:</strong> Percentage of known issues found</li>
-                            <li><strong>Coverage:</strong> Which heuristics each model evaluates well</li>
-                            <li><strong>Hallucination rate:</strong> False positive identification</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4>Quality Metrics</h4>
-                        <ul>
-                            <li><strong>Heuristic assignment accuracy:</strong> Correct categorization of issues</li>
-                            <li><strong>Severity calibration:</strong> Alignment with expert severity ratings</li>
-                            <li><strong>Explanation quality:</strong> Specificity and actionability of recommendations</li>
-                            <li><strong>Consistency:</strong> Same issues identified across similar interfaces</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4>Comparative Analysis</h4>
-                        <ul>
-                            <li><strong>Model agreement scores:</strong> Consensus between different models</li>
-                            <li><strong>Cost efficiency curves:</strong> Issues found per dollar spent</li>
-                            <li><strong>Unique findings:</strong> What each model/technique uniquely identifies</li>
-                        </ul>
-                    </div>
-                </div>
+                    <h4>Detection Metrics</h4>
+                    <ul>
+                        <li><strong>Precision:</strong> Percentage of flagged issues that are legitimate</li>
+                        <li><strong>Recall:</strong> Percentage of known issues found</li>
+                        <li><strong>Coverage:</strong> Which heuristics each model evaluates well</li>
+                        <li><strong>Hallucination rate:</strong> False positive identification</li>
+                    </ul>
+                    <h4>Quality Metrics</h4>
+                    <ul>
+                        <li><strong>Heuristic assignment accuracy:</strong> Correct categorization of issues</li>
+                        <li><strong>Severity calibration:</strong> Alignment with expert severity ratings</li>
+                        <li><strong>Explanation quality:</strong> Specificity and actionability of recommendations</li>
+                        <li><strong>Consistency:</strong> Same issues identified across similar interfaces</li>
+                    </ul>
+                    <h4>Comparative Analysis</h4>
+                    <ul>
+                        <li><strong>Model agreement scores:</strong> Consensus between different models</li>
+                        <li><strong>Cost efficiency curves:</strong> Issues found per dollar spent</li>
+                        <li><strong>Unique findings:</strong> What each model/technique uniquely identifies</li>
+                    </ul>
             </div>
         `;
     }

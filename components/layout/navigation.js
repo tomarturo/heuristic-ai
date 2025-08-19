@@ -89,6 +89,7 @@ export class TopNavigation extends HTMLElement {
                         <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
                         Future
                     </a>
+                    <sl-divider style="--spacing: .15rem;"></sl-divider>
                     <div class="social-links">
                         <a href="https://github.com/tomarturo" class="social-link" target="blank">
                             <sl-icon name="github"></sl-icon>

@@ -56,9 +56,9 @@ app-shell {
 
 /* Top Navigation */
 .top-nav-wrapper {
-    position: sticky;
+    /* position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 100; */
     padding: var(--sl-spacing-large);
     background-color: var(--sl-color-neutral-0);
 }
@@ -500,6 +500,10 @@ pre, code {
 }
 
 @media (max-width: 768px) {
+    .right-rail.is-toc {
+        display: none;
+    }
+
     .nav-link-wrapper,
     .social-link-wrapper {
         display: none;
@@ -508,7 +512,7 @@ pre, code {
     .mobile-menu-toggle {
         display: block;
         background: none;
-        color: var(--sl-color-neutral-1000);
+        color: var(--sl-color-neutral-600);
         font-size: var(--sl-font-size-medium);
         font-weight: var(--sl-font-weight-semibold);
         border: 1px solid var(--sl-color-neutral-300);
@@ -532,30 +536,32 @@ pre, code {
         z-index: 1000;
         display: none;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
     }
 
     .mobile-menu-overlay.active {
         display: flex;
+        flex-direction: column;
     }
 
     .mobile-menu {
         background: var(--sl-color-neutral-0);
-        border-radius: var(--sl-border-radius-large);
-        padding: var(--sl-spacing-2x-large);
+        border-radius: var(--sl-border-radius-medium);
+        padding: var(--sl-spacing-x-large);
         min-width: 280px;
         max-width: 90vw;
+        margin-top: 15vh;
         display: flex;
         flex-direction: column;
-        gap: var(--sl-spacing-large);
+        gap: var(--sl-spacing-x-large);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
     }
 
     .mobile-menu .nav-link {
         display: flex;
         align-items: center;
         gap: var(--sl-spacing-small);
-        padding: var(--sl-spacing-medium);
         color: var(--sl-color-neutral-1000);
         text-decoration: none;
         font-size: var(--sl-font-size-large);
@@ -564,12 +570,10 @@ pre, code {
     }
 
     .mobile-menu .nav-link:hover {
-        background: var(--sl-color-neutral-50);
         color: var(--sl-color-primary-600);
     }
 
     .mobile-menu .nav-link.active {
-        background: var(--sl-color-primary-50);
         color: var(--sl-color-primary-600);
     }
 
@@ -577,8 +581,6 @@ pre, code {
         display: flex;
         gap: var(--sl-spacing-large);
         justify-content: center;
-        padding-top: var(--sl-spacing-large);
-        border-top: 1px solid var(--sl-color-neutral-100);
     }
 
     .mobile-menu .social-link {
@@ -600,10 +602,6 @@ pre, code {
         grid-template-columns: 1fr;
         gap: var(--sl-spacing-2x-large);
     }
-
-    .right-rail.is-toc {
-        display: none;
-    }
     
     .content-area {
         padding: var(--sl-spacing-large) var(--sl-spacing-medium);
@@ -617,11 +615,12 @@ pre, code {
     
     .right-rail {
         position: static;
-        order: -1;
+        order: 1;
         width: 100%;
         max-width: 100%;
     }
     
+
     .toc-nav {
         display: flex;
         overflow-x: auto;
