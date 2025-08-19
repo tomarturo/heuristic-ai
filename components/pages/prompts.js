@@ -59,7 +59,7 @@ export class PromptsPage extends HTMLElement {
 
                 <!-- Table of Contents Right Rail -->
 
-                <div class="right-rail">
+                <div class="right-rail is-toc">
                     <h3 class="right-rail-header">On this page</h3>
                     <section class="toc-nav">
                         <ul class="toc-list">

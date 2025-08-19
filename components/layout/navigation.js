@@ -71,7 +71,35 @@ export class TopNavigation extends HTMLElement {
                         <sl-icon name="linkedin"></sl-icon>
                     </a>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Open menu">
+                    Menu
+                </button>
             </nav>
+            <div class="mobile-menu-overlay">
+                <div class="mobile-menu">
+                    <a href="#prompts" class="nav-link" data-section="prompts">
+                        <sl-icon name="terminal-fill"></sl-icon>
+                        Prompts
+                    </a>
+                    <a href="#experiments" class="nav-link" data-section="experiments">
+                        <sl-icon name="flask-fill"></sl-icon>
+                        Experiments
+                    </a>
+                    <a href="#future" class="nav-link">
+                        <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
+                        Future
+                    </a>
+                    <sl-divider style="--spacing: .15rem;"></sl-divider>
+                    <div class="social-links">
+                        <a href="https://github.com/tomarturo" class="social-link" target="blank">
+                            <sl-icon name="github"></sl-icon>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tomkurzeka" class="social-link" target="blank">
+                            <sl-icon name="linkedin"></sl-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
         `;
         
         // Update active states after rendering
@@ -81,13 +109,38 @@ export class TopNavigation extends HTMLElement {
     setupEventListeners() {
         this.addEventListener('click', (event) => {
             const link = event.target.closest('a[href]');
+            const mobileToggle = event.target.closest('.mobile-menu-toggle');
+            
+            // Handle mobile menu toggle
+            if (mobileToggle) {
+                event.preventDefault();
+                this.toggleMobileMenu();
+                return;
+            }
+            
+            // Handle navigation links
             if (!link || link.classList.contains('disabled')) return;
+            
+            // Close mobile menu when clicking a link
+            if (link.closest('.mobile-menu')) {
+                this.closeMobileMenu();
+            }
             
             // Let hash navigation work naturally
             if (link.getAttribute('href').startsWith('#')) {
                 // Navigation will be handled by router
             } else {
                 event.preventDefault();
+            }
+        });
+
+        // Handle clicking outside mobile menu to close it
+        this.addEventListener('click', (event) => {
+            const overlay = event.target.closest('.mobile-menu-overlay');
+            const menu = event.target.closest('.mobile-menu');
+            
+            if (overlay && !menu) {
+                this.closeMobileMenu();
             }
         });
 
@@ -109,6 +162,20 @@ export class TopNavigation extends HTMLElement {
             const isActive = section === this.currentSection;
             link.classList.toggle('active', isActive);
         });
+    }
+
+    toggleMobileMenu() {
+        const overlay = this.querySelector('.mobile-menu-overlay');
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+    }
+
+    closeMobileMenu() {
+        const overlay = this.querySelector('.mobile-menu-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
     }
 }
 

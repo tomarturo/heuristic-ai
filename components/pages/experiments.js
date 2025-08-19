@@ -1,52 +1,32 @@
-   export class ExperimentsPage extends HTMLElement {
+export class ExperimentsPage extends HTMLElement {
     connectedCallback() {
         this.render();
     }
 
     render() {
         this.innerHTML = `
-            <section class="two-col-layout">
-                <div class="main-column">
-                    <div class="page-header">
-                        <h1>Experiments Overview</h1>
+          <section class="two-col-layout">
+                          <div class="main-column">
+                              <h1>Experiments Overview</h1>
                         <p class="page-description">Systematic evaluation of AI models performing UX heuristic analysis.</p>
-                    </div>
-                <div>   
-                    <h2>
-                        <a href="#experiments/models" class="btn-link">
-                            <sl-icon name="speedometer2"></sl-icon>
-                            Model Performance
-                        </a>
-                    </h2>
-                    <p class="text-muted">Compare how different AI models perform at identifying usability issues.</p>
-                </div>
-                <sl-divider></sl-divider>
-                <div>
-                    <h2>
-                        <a href="#experiments/interfaces" class="btn-link">
-                        <sl-icon name="collection"></sl-icon>
-                        Interface Evaluations
-                        </a>
-                    </h2>
-                    <p class="text-muted">See detailed breakdowns of heuristic violations found in test interfaces.</p>
-                </div>
-                <sl-divider></sl-divider>
-                <div>
-                    <h2>
-                        <a href="#experiments/interfaces" class="btn-link">
-                        <sl-icon name="folder-check"></sl-icon>
-                        All Results
-                        </a>
-                    </h2>
-                    <p class="text-muted">Interactive dashboard to explore all experimental findings.</p>
-                </div>
-                </div>
-                
-                <!-- Right Rail -->
+
+                              <div>
+                                  <p>A few posts on LinkedIn got me thinking about this question. Most of the attempts I read about were not particularly methodical, more or less attaching a screenshot to a prompt and blithely asking the model for a UX heuristic analysis based on its default dearth of information.</p>
+                                  <p>It struck me as a worthwhile task, seeing how far we could get a model to perform this tried and true UX task.</p>
+                                  <p>The timing was opportune as well. I needed a compelling subject to motivate me to,</p>
+                                  <ul>
+                                      <li>Dig more methodically into prompting</li>
+                                      <li>Explore, think about how to document, and then document the results of different prompt strategies and methods</li>
+                                      <li>Illustrate to other product designers what it looks like to design deeply with LLMs</li>
+                                  </ul>
+                              </div>
+                              
+                              <sl-divider style="--spacing: 4rem;"></sl-divider>
+                              
+                          </div>
+                          <!-- Right Rail -->
                 <div class="right-rail">
-                    <div class="toc-header">
-                        <h3>Quick Links</h3>
-                    </div>
+                        <h3 class="right-rail-header">Quick Links</h3>
                     <section class="toc-nav">
                         <ul class="toc-list">
                             <li><a href="#experiments/models" class="toc-link">Model Performance</a></li>
@@ -55,9 +35,10 @@
                         </ul>
                     </section>
                 </div>
-            </section>
+                      </section>  
         `;
     }
 }
 
 customElements.define('experiments-page', ExperimentsPage);
+
