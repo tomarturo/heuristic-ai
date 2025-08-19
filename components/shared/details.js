@@ -20,7 +20,7 @@ export class CustomDetails extends HTMLElement {
                 background-color: var(--sl-color-neutral-0);
                 overflow: hidden;
                 position: relative;
-                border: 1px solid var(--sl-color-neutral-200);
+                border: 1px solid var(--sl-color-neutral-100);
                 border-radius: var(--sl-border-radius-medium);
             }
 
@@ -54,6 +54,7 @@ export class CustomDetails extends HTMLElement {
                 border-bottom-left-radius: var(--sl-border-radius-medium);
                 cursor: pointer;
                 font-size: var(--sl-font-size-small);
+                font-weight: var(--sl-font-weight-semibold);
                 color: var(--sl-color-neutral-600);
             }
 

@@ -64,7 +64,7 @@ export class PromptDetail extends HTMLElement {
                 <!-- Table of Contents Right Rail -->
 
                 <div class="right-rail">
-                    <h3 class="right-rail-header">Contents</h3>
+                    <h3 class="right-rail-header">On this page</h3>
                     <section class="toc-nav">
                         <ul class="toc-list">
                             <li><a href="#overview" class="toc-link">Overview</a></li>
@@ -122,15 +122,15 @@ export class PromptDetail extends HTMLElement {
                     <div class="content-wrapper">
                         <div class="meta-wrapper">
                             <div class="prompt-info">
-                                <sl-tag size="small" variant="neutral">
+                                <sl-tag size="small" variant="accent-purple">
                                     <sl-icon name="braces"></sl-icon>
                                     ${this.selectedVersion.name || this.prompt.name}
                                 </sl-tag>
-                                <sl-tag size="small" variant="neutral">
+                                <sl-tag size="small" variant="accent-purple">
                                     <sl-icon name="text-paragraph"></sl-icon>
                                     ${this.getWordCount()} words 
                                 </sl-tag>
-                                <sl-tag size="small" variant="neutral">
+                                <sl-tag size="small" variant="accent-purple">
                                     <sl-icon name="database"></sl-icon>
                                     ${Math.ceil(this.getWordCount() * 1.3)} tokens
                                 </sl-tag>
@@ -138,7 +138,7 @@ export class PromptDetail extends HTMLElement {
                             <sl-copy-button 
                                 value="${this.escapeHtml(this.selectedVersion.prompt || this.selectedVersion.content)}"
                                 copy-label="Copy prompt"
-                                success-label="Copied!">
+                                primary-label="Copied!">
                             </sl-copy-button>
                         </div>
                         
@@ -162,15 +162,15 @@ export class PromptDetail extends HTMLElement {
                     <div class="content-wrapper">
                         <div class="meta-wrapper">
                             <div class="model-info">
-                                <sl-tag variant="neutral" size="small">
+                                <sl-tag variant="accent-blue" size="small">
                                     <sl-icon name="cpu"></sl-icon>
                                     GPT-4 Vision
                                 </sl-tag>
-                                <sl-tag variant="neutral" size="small">
+                                <sl-tag variant="accent-blue" size="small">
                                     <sl-icon name="currency-dollar"></sl-icon>
-                                    0.12
+                                0.12
                                 </sl-tag>
-                                <sl-tag variant="neutral" size="small">
+                                <sl-tag variant="accent-blue" size="small">
                                     <sl-icon name="clock"></sl-icon>
                                     15s
                                 </sl-tag>
@@ -217,35 +217,25 @@ export class PromptDetail extends HTMLElement {
                         </ul>
                     </div>
                     
-                    <div class="usage-examples">
+                    <div>
                         <h3>Recommended Models</h3>
                         <div class="model-recommendations">
                             <div class="model-card">
-                                <sl-tag variant="success" size="small">Recommended</sl-tag>
+                                <sl-tag variant="accent-purple" size="small">Recommended</sl-tag>
                                 <strong>GPT-4 Vision</strong>
                                 <p>Excellent for detailed UI analysis and heuristic evaluation</p>
                             </div>
                             <div class="model-card">
-                                <sl-tag variant="success" size="small">Recommended</sl-tag>
+                                <sl-tag variant="accent-purple" size="small">Recommended</sl-tag>
                                 <strong>Claude 3 Opus/Sonnet</strong>
                                 <p>Great for comprehensive UX insights and actionable feedback</p>
                             </div>
                             <div class="model-card">
-                                <sl-tag variant="warning" size="small">Limited</sl-tag>
+                                <sl-tag variant="success" size="small">Limited</sl-tag>
                                 <strong>Gemini Pro Vision</strong>
                                 <p>Good for basic analysis, may miss nuanced usability issues</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="usage-integration">
-                        <h3>Integration Tips</h3>
-                        <ul class="integration-list">
-                            <li><strong>Design Reviews:</strong> Use during design critiques and peer reviews</li>
-                            <li><strong>User Testing Prep:</strong> Identify potential issues before user sessions</li>
-                            <li><strong>Accessibility Audits:</strong> Combine with automated accessibility tools</li>
-                            <li><strong>Competitive Analysis:</strong> Evaluate competitor interfaces systematically</li>
-                        </ul>
                     </div>
                 </div>
             </section>
@@ -260,7 +250,7 @@ export class PromptDetail extends HTMLElement {
                         <sl-icon name="exclamation-triangle" style="font-size: 3rem; color: var(--sl-color-warning-600); margin-bottom: 1rem;"></sl-icon>
                         <h2>Prompt Not Found</h2>
                         <p>The prompt you're looking for doesn't exist or may have been moved.</p>
-                        <sl-button variant="primary" href="#prompts">
+                        <sl-button variant="accent-purple" href="#prompts">
                             <sl-icon slot="prefix" name="arrow-left"></sl-icon>
                             Back to Prompts
                         </sl-button>

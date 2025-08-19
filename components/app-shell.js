@@ -22,9 +22,7 @@ export class AppShell extends HTMLElement {
                 <div class="top-nav-wrapper">
                     <top-navigation></top-navigation>
                 </div>
-                <main class="main-content">
-                    <content-area></content-area>
-                </main>
+                <content-area></content-area>
             </div>
         `;
 

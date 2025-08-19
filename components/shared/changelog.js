@@ -16,8 +16,7 @@ export class ChangelogComponent extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            
-                <h3 class="right-rail-header">Changelog</h3>
+                <h3 class="right-rail-header">Activity</h3>
                 <div class="changelog-wrapper">
                     ${changes.map(change => this.renderChangelogItem(change)).join('')}
                 </div>
@@ -26,7 +25,7 @@ export class ChangelogComponent extends HTMLElement {
 
     renderChangelogItem(change) {
         return `
-            <div>
+            <div class="changelog-item-wrapper">
                 <text class="changelog-date">${change.date}</text>
                 <p class="text-muted">${change.description}</p>
                 <div class="changelog-item-tags">
