@@ -5,7 +5,7 @@ export const prompts = [
         name: "ux_eval_brief",
         title: "Brief Evaluation",
         description: `
-        The Brief version aims to determine whether AI models can effectively leverage their inherent knowledge with minimal guidance, whether shorter prompts actually produce more focused and accurate evaluations, and whether simplicity reduces the risk of hallucination or analytical drift that might occur with more complex instructions.
+        The Brief  aims to determine whether AI models can effectively leverage their inherent knowledge with minimal guidance, whether shorter prompts actually produce more focused and accurate evaluations, and whether simplicity reduces the risk of hallucination or analytical drift that might occur with more complex instructions.
         `,
         system: "You are a UX evaluation expert familiar with Nielsen's heuristics. Provide clear, actionable feedback.",
         prompt: 
