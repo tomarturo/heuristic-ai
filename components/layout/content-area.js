@@ -53,6 +53,9 @@ export class ContentArea extends HTMLElement {
                 
             case 'experiments-page':
                 return this.createExperimentsOverviewComponent();
+
+            case 'experiment-detail':  
+                return this.createExperimentDetailComponent(state.params.section);
                 
             default:
                 return this.createNotFoundComponent();
@@ -79,6 +82,12 @@ export class ContentArea extends HTMLElement {
         const experimentsOverview = document.createElement('experiments-page');
         return experimentsOverview;
     }
+
+    createExperimentDetailComponent(experimentId) {
+        const experimentDetail = document.createElement('experiment-detail');
+        experimentDetail.setAttribute('experiment-id', experimentId);
+        return experimentDetail;
+}
 
     createNotFoundComponent() {
         const notFound = document.createElement('not-found-view');
