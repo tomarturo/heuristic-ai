@@ -1,0 +1,151 @@
+/* Experiment display styles using Flexoki tokens */
+
+.experiment-card {
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.experiment-meta {
+  margin-bottom: 1.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.metric {
+  padding: 0.5rem;
+  background: var(--sl-color-neutral-50);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid var(--sl-color-neutral-150);
+}
+
+.issues-summary {
+  margin-bottom: 1.5rem;
+}
+
+.issues-summary h4 {
+  margin: 0 0 1rem 0;
+  color: var(--sl-color-neutral-700);
+}
+
+.severity-breakdown {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.issue-detail {
+  border-left: 3px solid var(--sl-color-orange-400);
+  padding-left: 1rem;
+}
+
+.issue-detail[data-severity="5"] {
+  border-left-color: var(--sl-color-red-500);
+}
+
+.issue-detail[data-severity="4"] {
+  border-left-color: var(--sl-color-orange-500);
+}
+
+.issue-detail[data-severity="3"] {
+  border-left-color: var(--sl-color-yellow-500);
+}
+
+.issue-detail[data-severity="2"] {
+  border-left-color: var(--sl-color-cyan-400);
+}
+
+.issue-detail[data-severity="1"] {
+  border-left-color: var(--sl-color-green-400);
+}
+
+.issue-content {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--sl-color-neutral-0);
+  border-radius: 6px;
+  border: 1px solid var(--sl-color-neutral-100);
+}
+
+.issue-content p {
+  margin: 0 0 0.75rem 0;
+  color: var(--sl-color-neutral-800);
+}
+
+.issue-content p:last-child {
+  margin-bottom: 0;
+}
+
+.issue-content strong {
+  color: var(--sl-color-neutral-900);
+}
+
+/* Severity badge styling using custom variants */
+sl-badge[variant="severity-5"]::part(base) {
+  background-color: var(--sl-color-red-50);
+  border: 1px solid var(--sl-color-red-200);
+  color: var(--sl-color-red-700);
+}
+
+sl-badge[variant="severity-4"]::part(base) {
+  background-color: var(--sl-color-orange-50);
+  border: 1px solid var(--sl-color-orange-200);
+  color: var(--sl-color-orange-700);
+}
+
+sl-badge[variant="severity-3"]::part(base) {
+  background-color: var(--sl-color-yellow-50);
+  border: 1px solid var(--sl-color-yellow-200);
+  color: var(--sl-color-yellow-700);
+}
+
+sl-badge[variant="severity-2"]::part(base) {
+  background-color: var(--sl-color-cyan-50);
+  border: 1px solid var(--sl-color-cyan-200);
+  color: var(--sl-color-cyan-700);
+}
+
+sl-badge[variant="severity-1"]::part(base) {
+  background-color: var(--sl-color-green-50);
+  border: 1px solid var(--sl-color-green-200);
+  color: var(--sl-color-green-700);
+}
+
+/* Card styling improvements */
+.experiment-card::part(base) {
+  background: var(--sl-color-neutral-0);
+  border: 1px solid var(--sl-color-neutral-150);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.experiment-card::part(header) {
+  border-bottom: 1px solid var(--sl-color-neutral-150);
+  background: var(--sl-color-neutral-50);
+}
+
+/* Details component styling */
+sl-details.issue-detail::part(base) {
+  border: 1px solid var(--sl-color-neutral-150);
+  border-radius: 6px;
+  background: var(--sl-color-neutral-0);
+}
+
+sl-details.issue-detail::part(header) {
+  background: var(--sl-color-neutral-50);
+  padding: 0.75rem 1rem;
+}
+
+sl-details.issue-detail::part(content) {
+  background: var(--sl-color-neutral-0);
+}
