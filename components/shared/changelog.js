@@ -25,12 +25,10 @@ export class ChangelogComponent extends HTMLElement {
                     ${change.tags.map(tag => {
                         const tagData = getTagData(tag);
                         return `
-                            <sl-tooltip content="${tagData.context}" placement="bottom">
-                                <sl-tag size="small" variant="neutral">
-                                    <sl-icon name="${tagData.icon}"></sl-icon>
-                                    ${tag}
-                                </sl-tag>
-                            </sl-tooltip>
+                            <sl-tag size="small" variant="neutral">
+                                <sl-icon name="${tagData.icon}"></sl-icon>
+                                ${tag}
+                            </sl-tag>
                         `;
                     }).join('')}
                 </div>

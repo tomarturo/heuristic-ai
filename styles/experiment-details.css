@@ -92,7 +92,7 @@
 }
 
 /* Severity badge styling using custom variants */
-sl-badge[variant="severity-5"]::part(base) {
+sl-badge[variant="severity5"]::part(base) {
   background-color: var(--sl-color-red-50);
   border: 1px solid var(--sl-color-red-200);
   color: var(--sl-color-red-700);

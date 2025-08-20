@@ -41,7 +41,7 @@ export class TopNavigation extends HTMLElement {
     render() {
         this.innerHTML = `
             <nav class="top-nav">
-                <div style="display: flex; flex-direction: row; gap:var(--sl-spacing-3x-large);">
+                <div class="top-nav-left">
                     <div class="nav-brand-wrapper">
                         <a href="#" class="nav-brand" data-section="home">
                         <sl-icon name="transparency"></sl-icon>
@@ -50,16 +50,16 @@ export class TopNavigation extends HTMLElement {
                     </div>
                     <div class="nav-link-wrapper">
                         <a href="#prompts" class="nav-link" data-section="prompts">
-                            <sl-icon name="terminal-fill"></sl-icon>
-                            Prompts
+                            <sl-icon name="shadows"></sl-icon>
+                            Methodology
                         </a>
                         <a href="#experiments" class="nav-link" data-section="experiments">
-                            <sl-icon name="flask-fill"></sl-icon>
-                            Experiments
-                        </a>
-                        <a href="#future" class="nav-link">
-                            <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
-                            Future
+                            <sl-icon name="shadows" style="transform: rotate(90deg)"></sl-icon>
+                            Evaluation
+                            </a>
+                        <a href="#insights" class="nav-link">
+                            <sl-icon name="shadows" style="transform: rotate(180deg)"></sl-icon>    
+                            Insights
                         </a>
                     </div>
                 </div>
@@ -71,35 +71,36 @@ export class TopNavigation extends HTMLElement {
                         <sl-icon name="linkedin"></sl-icon>
                     </a>
                 </div>
-                <button class="mobile-menu-toggle" aria-label="Open menu">
-                    Menu
-                </button>
+                <sl-dropdown class="mobile-menu-dropdown">
+                    <sl-button slot="trigger" size="small" outline>
+                        <sl-icon slot="prefix" name="list"></sl-icon>
+                        Menu
+                    </sl-button>
+                    <sl-menu>
+                        <sl-menu-item href="#prompts" data-section="prompts">
+                            <sl-icon slot="prefix" name="shadows"></sl-icon>
+                            Methodology
+                        </sl-menu-item>
+                        <sl-menu-item href="#experiments" data-section="experiments">
+                            <sl-icon slot="prefix" name="shadows" style="transform: rotate(90deg)"></sl-icon>
+                            Evaluation
+                        </sl-menu-item>
+                        <sl-menu-item href="#insights">
+                            <sl-icon slot="prefix" name="shadows" style="transform: rotate(180deg)"></sl-icon>
+                            Insights
+                        </sl-menu-item>
+                        <sl-divider></sl-divider>
+                        <sl-menu-item href="https://github.com/tomarturo" target="_blank">
+                            <sl-icon slot="prefix" name="github"></sl-icon>
+                            GitHub
+                        </sl-menu-item>
+                        <sl-menu-item href="https://www.linkedin.com/in/tomkurzeka" target="_blank">
+                            <sl-icon slot="prefix" name="linkedin"></sl-icon>
+                            LinkedIn
+                        </sl-menu-item>
+                    </sl-menu>
+                </sl-dropdown>
             </nav>
-            <div class="mobile-menu-overlay">
-                <div class="mobile-menu">
-                    <a href="#prompts" class="nav-link" data-section="prompts">
-                        <sl-icon name="terminal-fill"></sl-icon>
-                        Prompts
-                    </a>
-                    <a href="#experiments" class="nav-link" data-section="experiments">
-                        <sl-icon name="flask-fill"></sl-icon>
-                        Experiments
-                    </a>
-                    <a href="#future" class="nav-link">
-                        <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
-                        Future
-                    </a>
-                    <sl-divider style="--spacing: .15rem;"></sl-divider>
-                    <div class="social-links">
-                        <a href="https://github.com/tomarturo" class="social-link" target="blank">
-                            <sl-icon name="github"></sl-icon>
-                        </a>
-                        <a href="https://www.linkedin.com/in/tomkurzeka" class="social-link" target="blank">
-                            <sl-icon name="linkedin"></sl-icon>
-                        </a>
-                    </div>
-                </div>
-            </div>
         `;
         
         // Update active states after rendering
@@ -109,22 +110,9 @@ export class TopNavigation extends HTMLElement {
     setupEventListeners() {
         this.addEventListener('click', (event) => {
             const link = event.target.closest('a[href]');
-            const mobileToggle = event.target.closest('.mobile-menu-toggle');
-            
-            // Handle mobile menu toggle
-            if (mobileToggle) {
-                event.preventDefault();
-                this.toggleMobileMenu();
-                return;
-            }
             
             // Handle navigation links
             if (!link || link.classList.contains('disabled')) return;
-            
-            // Close mobile menu when clicking a link
-            if (link.closest('.mobile-menu')) {
-                this.closeMobileMenu();
-            }
             
             // Let hash navigation work naturally
             if (link.getAttribute('href').startsWith('#')) {
@@ -134,13 +122,19 @@ export class TopNavigation extends HTMLElement {
             }
         });
 
-        // Handle clicking outside mobile menu to close it
-        this.addEventListener('click', (event) => {
-            const overlay = event.target.closest('.mobile-menu-overlay');
-            const menu = event.target.closest('.mobile-menu');
+        // Handle Shoelace menu item clicks
+        this.addEventListener('sl-select', (event) => {
+            const menuItem = event.detail.item;
+            const href = menuItem.getAttribute('href');
             
-            if (overlay && !menu) {
-                this.closeMobileMenu();
+            if (href) {
+                if (href.startsWith('#')) {
+                    // Internal navigation - let router handle
+                    window.location.hash = href;
+                } else {
+                    // External link
+                    window.open(href, menuItem.getAttribute('target') || '_self');
+                }
             }
         });
 
@@ -157,25 +151,19 @@ export class TopNavigation extends HTMLElement {
     }
 
     updateActiveStates() {
+        // Update nav links
         this.querySelectorAll('.nav-link, .nav-brand').forEach(link => {
             const section = link.getAttribute('data-section');
             const isActive = section === this.currentSection;
             link.classList.toggle('active', isActive);
         });
-    }
-
-    toggleMobileMenu() {
-        const overlay = this.querySelector('.mobile-menu-overlay');
-        if (overlay) {
-            overlay.classList.toggle('active');
-        }
-    }
-
-    closeMobileMenu() {
-        const overlay = this.querySelector('.mobile-menu-overlay');
-        if (overlay) {
-            overlay.classList.remove('active');
-        }
+        
+        // Update menu items
+        this.querySelectorAll('sl-menu-item').forEach(item => {
+            const section = item.getAttribute('data-section');
+            const isActive = section === this.currentSection;
+            item.checked = isActive;
+        });
     }
 }
 
