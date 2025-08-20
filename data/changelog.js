@@ -1,5 +1,11 @@
 export const changes = [
     {
+        id:"4",
+        date:"August 19, 2025",
+        description: "Wrote initial prompt test script; configured Ollama and llava for first test; created experiment-detail loader to display JSON output",
+        tags: ["ml-ops", "backend", "prompting"]
+    },
+    {
         id:"3",
         date:"August 18, 2025",
         description: "Refining front-end styles and simplifying layouts; preparing data structure for first experiments and evals; adding project background to homepage.",
