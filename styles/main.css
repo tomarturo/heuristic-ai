@@ -48,17 +48,17 @@ app-shell {
 }
 
 .app-layout {
+    flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: auto;
+    width: 100%;
+    max-width: 1146px;
 }
 
 /* Top Navigation */
 .top-nav-wrapper {
-    /* position: sticky;
-    top: 0;
-    z-index: 100; */
     padding: var(--sl-spacing-large);
     background-color: var(--sl-color-neutral-0);
 }
@@ -67,6 +67,7 @@ app-shell {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     max-width: var(--max-width);
     margin: auto;
 }
@@ -350,6 +351,15 @@ sl-tag sl-icon {
 }
 
 .right-rail {
+    position: sticky;
+    top: 128px;
+    height: fit-content;
+    min-width: 0;
+    max-width: 320px;
+    overflow-wrap: break-word;
+}
+
+.right-rail.is-toc {
     position: sticky;
     top: 128px;
     height: fit-content;
