@@ -7,7 +7,7 @@ export class ExperimentsPage extends HTMLElement {
         this.innerHTML = `
           <section class="two-col-layout">
                           <div class="main-column">
-                              <h1>Experiments Overview</h1>
+                              <h1>Evaluation</h1>
                         <p class="page-description">Systematic evaluation of AI models performing UX heuristic analysis.</p>
 
                               <div>

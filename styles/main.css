@@ -86,11 +86,7 @@ app-shell {
     align-items: center;
     gap: var(--sl-spacing-x-small);
     text-decoration: none;
-}
-
-.nav-brand.active {
-    color: var(--sl-color-primary-600);
-}
+}   
 
 .nav-brand:hover {
     color: var(--sl-color-primary-600);
@@ -351,8 +347,6 @@ sl-tag sl-icon {
 }
 
 .right-rail {
-    position: sticky;
-    top: 128px;
     height: fit-content;
     min-width: 0;
     max-width: 320px;

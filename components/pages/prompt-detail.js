@@ -63,7 +63,7 @@ export class PromptDetail extends HTMLElement {
                 
                 <!-- Table of Contents Right Rail -->
 
-                <div class="right-rail">
+                <div class="right-rail is-toc">
                     <h3 class="right-rail-header">On this page</h3>
                     <section class="toc-nav">
                         <ul class="toc-list">
@@ -117,7 +117,6 @@ export class PromptDetail extends HTMLElement {
         return `
             <section id="prompt-detail" class="page-section">
                 <h2 class="section-title">Prompt Detail</h2>
-                
                 <custom-details>
                     <div class="content-wrapper">
                         <div class="meta-wrapper">

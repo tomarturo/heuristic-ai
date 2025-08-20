@@ -25,7 +25,7 @@ export class PromptsPage extends HTMLElement {
                 <div class="main-column">
                     <div class="page-section" id="overview-section">
                         <div class="page-header">
-                            <h1>Prompts</h1>
+                            <h1>Methodology</h1>
                             <p class="page-description">I explore four methodologies for directing large language models to conduct comprehensive heuristic assessments of user interfaces. Within each methodology I test multiple prompts and prompt iterations.</p>
                         </div>
                     </div>

@@ -50,16 +50,16 @@ export class TopNavigation extends HTMLElement {
                     </div>
                     <div class="nav-link-wrapper">
                         <a href="#prompts" class="nav-link" data-section="prompts">
-                            <sl-icon name="terminal-fill"></sl-icon>
-                            Prompts
+                            <sl-icon name="shadows"></sl-icon>
+                            Methodology
                         </a>
                         <a href="#experiments" class="nav-link" data-section="experiments">
-                            <sl-icon name="flask-fill"></sl-icon>
-                            Experiments
-                        </a>
-                        <a href="#future" class="nav-link">
-                            <sl-icon name="arrow-up-right-circle-fill"></sl-icon>
-                            Future
+                            <sl-icon name="shadows" style="transform: rotate(90deg)"></sl-icon>
+                            Evaluation
+                            </a>
+                        <a href="#insights" class="nav-link">
+                            <sl-icon name="shadows" style="transform: rotate(180deg)"></sl-icon>    
+                            Insights
                         </a>
                     </div>
                 </div>

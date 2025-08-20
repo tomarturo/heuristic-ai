@@ -11,11 +11,11 @@ export class HomePage extends HTMLElement {
         this.innerHTML = `
             <section class="two-col-layout">
                 <div class="main-column">
-                    <h1>LLMs & UX Heuristic Analysis</h1>
-                    <p class="page-description">Can large language models reliably conduct a UX heuristic analysis?</p>
+                    <h1>Can artificial intelligence conduct UX heuristic analyses?</h1>
+                    <p class="page-description">UX heuristic analysis is a well-documented, circumscribed framework that brings measurable rigor to interface evaluation. Positioned at the convergence of aesthetic judgments and usability practicalities, it provides a unique context for evaluating AI capabilities.</p>
                     
                     <div>
-                        <p>A few posts on LinkedIn got me thinking about this question. Most of the attempts I read about were not particularly methodical, more or less attaching a screenshot to a prompt and blithely asking the model for a UX heuristic analysis based on its default dearth of information.</p>
+                        <p>Most of the attempts I read about were not particularly methodical, more or less attaching a screenshot to a prompt and blithely asking the model for a UX heuristic analysis based on its default dearth of information.</p>
                         <p>It struck me as a worthwhile task, seeing how far we could get a model to perform this tried and true UX task.</p>
                         <p>The timing was opportune as well. I needed a compelling subject to motivate me to,</p>
                         <ul>
