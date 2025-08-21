@@ -26,32 +26,25 @@ export class PromptsPage extends HTMLElement {
                     <div class="page-section" id="overview-section">
                         <div class="page-header">
                             <h1>Methodology</h1>
-                            <p class="page-description">I explore four methodologies for directing large language models to conduct comprehensive heuristic assessments of user interfaces. Within each methodology I test multiple prompts and prompt iterations.</p>
+                            <p class="page-description">My methodology leverages static and dynamic AI capabilities. Static capabilities rely on an interface screenshot and text prompts. Dynamic capabitlies rely on custom intstructions for browser and computer-use agents.</p>
                         </div>
                     </div>
                     <div>
                     ${methods.map(method => `
                         <div class="method-section page-section" id="${method.type}">
-                            <h2 class="section-title">${method.title}</h2>
+                            <h3 class="section-title">${method.title}</h3>
                             <p>${method.description}</p>
-                            <div class="prompts-list-wrapper">
-                                ${prompts
-                                    .filter(prompt => prompt.type === method.type)
-                                    .map(prompt => `
-                                        <div class="prompt-card" data-prompt-id="${prompt.id}">
-                                            <div class="prompt-card-title">
-                                            <h3>${prompt.title}</h3>
-                                            </div>
-                                            <p class="prompt-card-description">${this.truncateText(prompt.description)}</p>
-                                            ${prompt.versions ? 
-                                                `<sl-tag size="small" variant="neutral" style="width: fit-content; margin-top: var(--sl-spacing-x-small);">
-                                                    <sl-icon name="layers"></sl-icon>
-                                                    ${prompt.versions.length} versions
-                                                </sl-tag>` : ''
-                                            }
+                            ${prompts
+                                .filter(prompt => prompt.type === method.type)
+                                .map(prompt => `
+                                    <div class="prompt-card" data-prompt-id="${prompt.id}">
+                                        <div class="prompt-card-title">
+                                            <sl-icon name="braces"></sl-icon>
+                                            <h4>${prompt.title}</h4>
                                         </div>
-                                    `).join('')}
-                            </div>
+                                        <p class="prompt-card-description">${this.truncateText(prompt.description)}</p>
+                                    </div>
+                            `).join('')}
                         </div>
                     `).join('')}
                     </div>

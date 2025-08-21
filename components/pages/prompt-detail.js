@@ -68,7 +68,7 @@ export class PromptDetail extends HTMLElement {
                     <section class="toc-nav">
                         <ul class="toc-list">
                             <li><a href="#overview" class="toc-link">Overview</a></li>
-                            <li><a href="#prompt-detail" class="toc-link">Prompt Detail</a></li>
+                            <li><a href="#prompt-detail" class="toc-link">Prompt Details</a></li>
                             <li><a href="#sample-output" class="toc-link">Sample Output</a></li>
                             <li><a href="#usage" class="toc-link">Usage</a></li>
                         </ul>
@@ -87,43 +87,41 @@ export class PromptDetail extends HTMLElement {
                 <div class="page-header">
                     <h1>${this.prompt.title}</h1>
                     <p class="page-description">${this.prompt.description}</p>
-                    ${this.renderVersionSelector()}
                 </div>
             </section>
         `;
     }
 
-    renderVersionSelector() {
-        // Only show version selector if there are multiple versions
-        if (!this.prompt.versions || this.prompt.versions.length <= 1) {
-            return '';
-        }
+    // renderVersionSelector() {
+    //     // Only show version selector if there are multiple versions
+    //     if (!this.prompt.versions || this.prompt.versions.length <= 1) {
+    //         return '';
+    //     }
 
-        return `
-            <div class="version-selector">
-                <label for="version-select">Version:</label>
-                <sl-select id="version-select" value="${this.selectedVersion.id}" size="small">
-                    ${this.prompt.versions.map(version => `
-                        <sl-option value="${version.id}">${version.name}</sl-option>
-                    `).join('')}
-                </sl-select>
-            </div>
-        `;
-    }
+    //     return `
+    //         <div class="version-selector">
+    //             <sl-select id="version-select" value="${this.selectedVersion.id}" size="small">
+    //                 ${this.prompt.versions.map(version => `
+    //                     <sl-option value="${version.id}">${version.name}</sl-option>
+    //                 `).join('')}
+    //             </sl-select>
+    //         </div>
+    //     `;
+    // }
 
     renderPromptDetails() {
         const htmlContent = converter.makeHtml(this.selectedVersion.prompt || this.selectedVersion.content);
         
         return `
             <section id="prompt-detail" class="page-section">
-                <h2 class="section-title">Prompt Detail</h2>
+                <h2 class="section-title">Prompt Details</h2>
                 <custom-details>
                     <div class="content-wrapper">
                         <div class="meta-wrapper">
-                            <div class="prompt-info">
+                            <div class="prompt-tags">
                                 <sl-tag size="small" variant="accent-purple">
                                     <sl-icon name="braces"></sl-icon>
-                                    ${this.selectedVersion.name || this.prompt.name}
+                                    ${this.prompt.name}
                                 </sl-tag>
                                 <sl-tag size="small" variant="accent-purple">
                                     <sl-icon name="text-paragraph"></sl-icon>
@@ -156,7 +154,7 @@ export class PromptDetail extends HTMLElement {
         return `
             <section id="sample-output" class="page-section">
                 <h2 class="section-title">Sample Output</h2>
-                
+
                 <custom-details>
                     <div class="content-wrapper">
                         <div class="meta-wrapper">
