@@ -17,13 +17,14 @@ export class ExperimentDetailPage {
       <!-- Main Content -->
         <div class="main-column">
             <div class="page-content">
-              <header class="page-header">
-                <h1>Experiment Detail</h1>
-                <sl-breadcrumb>
-                  <sl-breadcrumb-item href="#experiments">Experiments</sl-breadcrumb-item>
-                  <sl-breadcrumb-item>${this.experimentId}</sl-breadcrumb-item>
-                </sl-breadcrumb>
-              </header>
+              <div class="page-header">
+              <sl-breadcrumb>
+                <sl-breadcrumb-item href="#experiments">Experiments</sl-breadcrumb-item>
+                <sl-breadcrumb-item>${this.experimentId}</sl-breadcrumb-item>
+              </sl-breadcrumb>
+              <h1 class="page-section" id="overview">Brief on SampleUI with Llava</h1>
+              <p class="page-description">This experiment uses the <a href="#" class="inline-link">Brief Eval Prompt</a> and a screenshot of <a href="#" class="inline-link">Sample UI<a/> with the <a href="#" class="inline-link">LLava multi-modal</a> model.</p>
+              </div>
           <div id="experiments-container">
             <div class="loading-state">
               <sl-spinner></sl-spinner>

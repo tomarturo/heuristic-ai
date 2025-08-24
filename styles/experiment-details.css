@@ -1,28 +1,47 @@
-/* Experiment display styles using Flexoki tokens */
-
-.experiment-card {
-  margin-bottom: 2rem;
-  width: 3000px;
-  background: var(--sl-color-cyan-200);
-}
-
 .experiment-meta {
   margin-bottom: 1.5rem;
 }
 
 .metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: var(--sl-spacing-small);
+  margin-top: var(--sl-spacing-x-large);
+  flex-wrap: wrap;
+}
+
+.metric-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sl-spacing-small) var(--sl-spacing-medium);
+  background: var(--sl-color-neutral-50);
+  border-radius: var(--sl-border-radius-small);
+  border: 1px solid var(--sl-color-neutral-150);
+  gap: var(--sl-spacing-medium);
+}
+
+.metric-top {
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .metric {
-  padding: 0.5rem;
-  background: var(--sl-color-neutral-50);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  border: 1px solid var(--sl-color-neutral-150);
+  font-weight: var(--sl-font-weight-bold);
+  font-family: var(--sl-font-mono);
+  font-size: var(--sl-font-size-medium);
+}
+
+.metric-label {
+  color: var(--sl-color-neutral-600);
+  font-size: var(--sl-font-size-small);
+}
+
+.metric-icon {
+  color: var(--sl-color-neutral-400);
 }
 
 .issues-summary {
