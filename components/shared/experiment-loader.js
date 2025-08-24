@@ -58,45 +58,50 @@ export class ExperimentLoader {
     return [];
   }
 
-  renderExperimentCard(experiment) {
+  renderExperimentContent(experiment) {
     const issues = experiment.parsed_issues?.issues || [];
     const metrics = experiment.metrics;
 
     return `
-      <sl-card class="experiment-card">
-        <div slot="header">
-          <h3>${experiment.interface_id}</h3>
-          <sl-badge variant="primary">${experiment.model}</sl-badge>
-        </div>
-        
-        <div class="experiment-meta">
-          <sl-details summary="Performance Metrics">
-            <div class="metrics-grid">
-              <div class="metric">
-                <strong>Duration:</strong> ${metrics.duration_seconds}s
+      <div class="page-section">
+          <div class="metrics-grid">
+            <div class="metric-wrapper">
+              <div class="metric-top">
+                <text class="metric">${issues.length}</text>
+                <sl-icon name="cone-striped" class="metric-icon"></sl-icon>
               </div>
-              <div class="metric">
-                <strong>Output Tokens:</strong> ${metrics.output_tokens}
-              </div>
-              <div class="metric">
-                <strong>Tokens/sec:</strong> ${metrics.tokens_per_second}
-              </div>
-              <div class="metric">
-                <strong>Total Tokens:</strong> ${metrics.total_tokens}
-              </div>
+              <text class="metric-label">Issues found</text>
             </div>
-          </sl-details>
-        </div>
+            <div class="metric-wrapper">
+              <div class="metric-top">
+                <text class="metric">${metrics.duration_seconds}s</text>
+                <sl-icon name="hourglass-split" class="metric-icon"></sl-icon>
+              </div>
+              <text class="metric-label">Response time</text>
+            </div>
+            <div class="metric-wrapper">
+              <div class="metric-top">
+                <text class="metric">${metrics.output_tokens}</text>
+                <sl-icon name="database-fill" class="metric-icon"></sl-icon>
+              </div>
+              <text class="metric-label">Output Tokens</text>
+            </div>
+            <div class="metric-wrapper">
+              <div class="metric-top">
+                <text class="metric">${metrics.tokens_per_second}</text>
+                <sl-icon name="speedometer" class="metric-icon"></sl-icon>
+              </div>
+              <text class="metric-label">Tokens/second</text>
+            </div>
+          </div>
+      </div>
+      <div class="issues-summary">
+        ${this.renderSeverityBreakdown(issues)}
+      </div>
 
-        <div class="issues-summary">
-          <h4>Found ${issues.length} Issues</h4>
-          ${this.renderSeverityBreakdown(issues)}
-        </div>
-
-        <div class="issues-list">
-          ${issues.map(issue => this.renderIssue(issue)).join('')}
-        </div>
-      </sl-card>
+      <div class="issues-list">
+        ${issues.map((issue, index) => this.renderIssue(issue, index)).join('')}
+      </div>
     `;
   }
 
@@ -119,9 +124,9 @@ export class ExperimentLoader {
     `;
   }
 
-  renderIssue(issue) {
+  renderIssue(issue, index) {
     return `
-      <sl-details class="issue-detail">
+      <div class="issue-detail page-section" id="issue-${index}">
         <span slot="summary">
           <sl-badge variant="${this.getSeverityVariant(issue.severity)}">
             ${issue.severity}
@@ -134,7 +139,7 @@ export class ExperimentLoader {
           <p><strong>Location:</strong> ${issue.location}</p>
           <p><strong>Recommendation:</strong> ${issue.recommendation}</p>
         </div>
-      </sl-details>
+      </div>
     `;
   }
 
@@ -155,8 +160,12 @@ export async function displayExperiments() {
   const container = document.querySelector('#experiments-container');
   if (container && experiments.length > 0) {
     container.innerHTML = experiments
-      .map(exp => experimentLoader.renderExperimentCard(exp))
+      .map(exp => experimentLoader.renderExperimentContent(exp))
       .join('');
+
+  if (tocContainer) {
+      tocContainer.innerHTML = this.generateTOC(this.experiment);
+    }
   } else if (container) {
     container.innerHTML = '<p>No experiments found.</p>';
   }

@@ -48,6 +48,11 @@ p {
     color: var(--sl-color-neutral-0);
 }
 
+.inline-link {
+    color: var(--sl-color-primary-600);
+    text-decoration: none;
+}
+
 app-shell {
     min-height: 100vh;
     display: flex;
@@ -298,48 +303,6 @@ sl-tag sl-icon {
     display: flex;
     gap: var(--sl-spacing-x-small);
     flex-wrap: wrap;
-}
-
-/* experiments page */
-.experiment-card {
-    background-color: var(--sl-color-neutral-50);
-    border: 1px solid var(--sl-color-neutral-200);
-    border-radius: var(--sl-border-radius-large);
-    padding: var(--sl-spacing-medium) var(--sl-spacing-large);
-    transition: var(--transition);
-    cursor: pointer;
-    margin-bottom: var(--sl-spacing-large);
-}
-
-.experiment-card h2 {
-    margin-top: 0;
-    margin-bottom: var(--sl-spacing-x-small);
-}
-
-.experiment-card:hover {
-    border-color: var(--sl-color-neutral-300);
-    background-color: var(--sl-color-neutral-50);
-}
-
-.experiment-card:hover .btn-link {
-    color: var(--sl-color-primary-600);
-}
-
-.btn-link {
-    color: var(--sl-color-neutral-1000);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.btn-link sl-icon {
-    margin-right: var(--sl-spacing-small);
-}
-
-.btn-link:hover {
-    color: var(--sl-color-primary-600);
 }
 
 /* Two-Column Layout System */

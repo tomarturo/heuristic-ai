@@ -1,27 +1,47 @@
-/* Experiment display styles using Flexoki tokens */
-
-.experiment-card {
-  margin-bottom: 2rem;
-  max-width: 800px;
-}
-
 .experiment-meta {
   margin-bottom: 1.5rem;
 }
 
 .metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: var(--sl-spacing-small);
+  margin-top: var(--sl-spacing-x-large);
+  flex-wrap: wrap;
+}
+
+.metric-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sl-spacing-small) var(--sl-spacing-medium);
+  background: var(--sl-color-neutral-50);
+  border-radius: var(--sl-border-radius-small);
+  border: 1px solid var(--sl-color-neutral-150);
+  gap: var(--sl-spacing-medium);
+}
+
+.metric-top {
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .metric {
-  padding: 0.5rem;
-  background: var(--sl-color-neutral-50);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  border: 1px solid var(--sl-color-neutral-150);
+  font-weight: var(--sl-font-weight-bold);
+  font-family: var(--sl-font-mono);
+  font-size: var(--sl-font-size-medium);
+}
+
+.metric-label {
+  color: var(--sl-color-neutral-600);
+  font-size: var(--sl-font-size-small);
+}
+
+.metric-icon {
+  color: var(--sl-color-neutral-400);
 }
 
 .issues-summary {
@@ -122,20 +142,9 @@ sl-badge[variant="severity-1"]::part(base) {
   color: var(--sl-color-green-700);
 }
 
-/* Card styling improvements */
-.experiment-card::part(base) {
-  background: var(--sl-color-neutral-0);
-  border: 1px solid var(--sl-color-neutral-150);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.experiment-card::part(header) {
-  border-bottom: 1px solid var(--sl-color-neutral-150);
-  background: var(--sl-color-neutral-50);
-}
-
 /* Details component styling */
 sl-details.issue-detail::part(base) {
+  min-width: 100%;
   border: 1px solid var(--sl-color-neutral-150);
   border-radius: 6px;
   background: var(--sl-color-neutral-0);
