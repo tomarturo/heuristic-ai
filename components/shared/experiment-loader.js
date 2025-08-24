@@ -58,19 +58,16 @@ export class ExperimentLoader {
     return [];
   }
 
-  renderExperimentCard(experiment) {
+  renderExperimentContent(experiment) {
     const issues = experiment.parsed_issues?.issues || [];
     const metrics = experiment.metrics;
 
     return `
-      <sl-card class="experiment-card">
-        <div slot="header">
+      <div class="page-section" id="overview">
           <h3>${experiment.interface_id}</h3>
           <sl-badge variant="primary">${experiment.model}</sl-badge>
-        </div>
-        
         <div class="experiment-meta">
-          <sl-details summary="Performance Metrics">
+          <div summary="Performance Metrics">
             <div class="metrics-grid">
               <div class="metric">
                 <strong>Duration:</strong> ${metrics.duration_seconds}s
@@ -85,7 +82,7 @@ export class ExperimentLoader {
                 <strong>Total Tokens:</strong> ${metrics.total_tokens}
               </div>
             </div>
-          </sl-details>
+          </div>
         </div>
 
         <div class="issues-summary">
@@ -94,9 +91,9 @@ export class ExperimentLoader {
         </div>
 
         <div class="issues-list">
-          ${issues.map(issue => this.renderIssue(issue)).join('')}
+          ${issues.map((issue, index) => this.renderIssue(issue, index)).join('')}
         </div>
-      </sl-card>
+      </div >
     `;
   }
 
@@ -119,9 +116,9 @@ export class ExperimentLoader {
     `;
   }
 
-  renderIssue(issue) {
+  renderIssue(issue, index) {
     return `
-      <sl-details class="issue-detail">
+      <div class="issue-detail page-section" id="issue-${index}">
         <span slot="summary">
           <sl-badge variant="${this.getSeverityVariant(issue.severity)}">
             ${issue.severity}
@@ -134,7 +131,7 @@ export class ExperimentLoader {
           <p><strong>Location:</strong> ${issue.location}</p>
           <p><strong>Recommendation:</strong> ${issue.recommendation}</p>
         </div>
-      </sl-details>
+      </div>
     `;
   }
 
@@ -155,8 +152,12 @@ export async function displayExperiments() {
   const container = document.querySelector('#experiments-container');
   if (container && experiments.length > 0) {
     container.innerHTML = experiments
-      .map(exp => experimentLoader.renderExperimentCard(exp))
+      .map(exp => experimentLoader.renderExperimentContent(exp))
       .join('');
+
+  if (tocContainer) {
+      tocContainer.innerHTML = this.generateTOC(this.experiment);
+    }
   } else if (container) {
     container.innerHTML = '<p>No experiments found.</p>';
   }

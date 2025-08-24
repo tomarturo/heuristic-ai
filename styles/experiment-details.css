@@ -2,7 +2,8 @@
 
 .experiment-card {
   margin-bottom: 2rem;
-  max-width: 800px;
+  width: 3000px;
+  background: var(--sl-color-cyan-200);
 }
 
 .experiment-meta {
@@ -122,20 +123,9 @@ sl-badge[variant="severity-1"]::part(base) {
   color: var(--sl-color-green-700);
 }
 
-/* Card styling improvements */
-.experiment-card::part(base) {
-  background: var(--sl-color-neutral-0);
-  border: 1px solid var(--sl-color-neutral-150);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.experiment-card::part(header) {
-  border-bottom: 1px solid var(--sl-color-neutral-150);
-  background: var(--sl-color-neutral-50);
-}
-
 /* Details component styling */
 sl-details.issue-detail::part(base) {
+  min-width: 100%;
   border: 1px solid var(--sl-color-neutral-150);
   border-radius: 6px;
   background: var(--sl-color-neutral-0);
